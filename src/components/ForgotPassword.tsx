@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, ArrowLeft, Loader, CheckCircle, AlertCircle } from 'lucide-react';
 import { DatabaseService } from '../services/database';
+import ThemeToggle from './ThemeToggle';
 
 interface ForgotPasswordProps {
   onBack: () => void;
@@ -39,20 +40,24 @@ export function ForgotPassword({ onBack, onBackToHome }: ForgotPasswordProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200 relative">
+      <div className="absolute top-6 right-6">
+        <ThemeToggle />
+      </div>
+
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <img src="/logo.jpg" alt="TALENTO" className="mx-auto h-16 w-auto" />
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Reset your password</h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <img src="/logo.png" alt="TALENTO" className="mx-auto h-16 w-auto rounded-xl shadow-md" />
+          <h2 className="mt-6 text-3xl font-bold font-heading text-gray-900 dark:text-white">Reset your password</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
             Enter your email address and we'll send you a link to reset your password.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700/60 p-8 transition-colors">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Email Address
               </label>
               <div className="relative">
@@ -64,26 +69,26 @@ export function ForgotPassword({ onBack, onBackToHome }: ForgotPasswordProps) {
                   name="email"
                   type="email"
                   required
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                   placeholder="your.email@example.com"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+              <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-xl p-4">
                 <div className="flex items-center">
                   <AlertCircle className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" />
-                  <p className="text-red-700 text-sm">{error}</p>
+                  <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
                 </div>
               </div>
             )}
 
             {success && (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+              <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/40 rounded-xl p-4">
                 <div className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                  <p className="text-green-700 text-sm">{success}</p>
+                  <p className="text-green-700 dark:text-green-400 text-sm">{success}</p>
                 </div>
               </div>
             )}
@@ -107,7 +112,7 @@ export function ForgotPassword({ onBack, onBackToHome }: ForgotPasswordProps) {
               <button
                 type="button"
                 onClick={onBack}
-                className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 text-sm font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 transition-all duration-200"
+                className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-700 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 transition-all duration-200"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to sign in
@@ -116,7 +121,7 @@ export function ForgotPassword({ onBack, onBackToHome }: ForgotPasswordProps) {
               <button
                 type="button"
                 onClick={onBackToHome}
-                className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 text-sm font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 transition-all duration-200"
+                className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-700 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 transition-all duration-200"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home

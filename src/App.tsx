@@ -24,6 +24,7 @@ import { ForgotPassword } from './components/ForgotPassword';
 import { DashboardPage } from './pages/DashboardPage';
 import { CareersPage } from './pages/CareersPage';
 import ThemeToggle from './components/ThemeToggle'; // Fixed import
+import HeroVisual from './components/HeroVisual';
 import type { CandidateApplication, ContactForm, AuthUser, UserProfile } from './lib/supabase';
 type ViewType = 'home' | 'auth' | 'forgot-password' | 'dashboard' | 'careers';
 function App() {
@@ -258,25 +259,31 @@ onProfileUpdate={(updatedProfile: React.SetStateAction<UserProfile | null>) => s
 return (
 <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
 {/* Navigation */}
-<nav className="bg-white dark:bg-gray-800 shadow-sm fixed w-full z-50 transition-colors duration-200">
+<nav className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm fixed w-full z-50 transition-colors duration-200 border-b border-gray-100 dark:border-gray-800/80">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="flex justify-between items-center h-16">
 <div className="flex items-center">
-<img src="/logo.png" alt="TALENTO" className="h-10 w-auto" />
+<img src="/logo.png" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
 </div>
 
 {/* Desktop Navigation */}
-<div className="hidden md:flex items-center ml-10 space-x-8">
-<a href="#home" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 px-3 py-2 text-base md:text-lg font-medium transition-colors">Home</a>
-<a href="#about" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 px-3 py-2 text-base md:text-lg font-medium transition-colors">About</a>
+<div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+<a href="#home" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Home</a>
+<a href="#services" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Services</a>
+<a href="#industries" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Industries</a>
+<a href="#about" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">About</a>
 <button
 onClick={() => window.open('https://job.talento.agency/', '_blank')}
-className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 px-3 py-2 text-base md:text-lg font-medium transition-colors"
+className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
 >
 Careers
 </button>
-<a href="#contact" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 px-3 py-2 text-base md:text-lg font-medium transition-colors">Contact</a>
-<a href="#apply" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 px-3 py-2 text-base md:text-lg font-medium transition-colors">Apply</a>
+<a href="#contact" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Contact</a>
+<a href="#apply" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Apply</a>
+</div>
+
+{/* Desktop Actions */}
+<div className="hidden lg:flex items-center space-x-3">
 
 
 {user ? (
@@ -337,27 +344,24 @@ Sign Out
 ) : (
 <button
 onClick={() => setCurrentView('auth')}
-className="bg-talento-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-talento-700 transition-colors"
+className="bg-talento-600 hover:bg-talento-700 active:scale-95 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:shadow transition-all duration-200"
 >
 Sign In
 </button>
 )}
-{/* Theme Toggle for Desktop */}
-<div className="flex items-center">
+<div className="h-4 w-px bg-gray-200 dark:bg-gray-800 mx-0.5"></div>
 <ThemeToggle />
 </div>
-</div>
-
-
 
 {/* Mobile menu button */}
-<div className="md:hidden flex items-center space-x-2">
+<div className="lg:hidden flex items-center space-x-2">
 <ThemeToggle />
 <button
 onClick={() => setIsMenuOpen(!isMenuOpen)}
-className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 p-2"
+className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-95 transition-all"
+aria-label="Toggle menu"
 >
-{isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+{isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 </button>
 </div>
 </div>
@@ -365,24 +369,63 @@ className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:te
 
 {/* Mobile Navigation */}
 {isMenuOpen && (
-<div className="md:hidden">
-<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-<a href="#home" className="text-gray-900 dark:text-gray-100 hover:text-talento-600 dark:hover:text-talento-400 block px-3 py-2 text-base font-medium">Home</a>
+<div className="lg:hidden">
+<div className="px-3 pt-2 pb-4 space-y-1 bg-white/98 dark:bg-[#181A19]/98 backdrop-blur-md border-t border-gray-100 dark:border-gray-800/80 shadow-xl transition-all">
+<a
+href="#home"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+Home
+</a>
+<a
+href="#services"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+Services
+</a>
+<a
+href="#industries"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+Industries
+</a>
+<a
+href="#about"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+About
+</a>
 <button
 onClick={() => {
-window.location.href = 'https://job.talento.agency/';
+setIsMenuOpen(false);
+window.open('https://job.talento.agency/', '_blank');
 }}
-className="flex items-center w-full text-left text-gray-700 dark:text-gray-200 px-3 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
 >
 Careers
 </button>
-<a href="#about" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 block px-3 py-2 text-base font-medium">About</a>
-<a href="#contact" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 block px-3 py-2 text-base font-medium">Contact</a>
-<a href="#apply" className="text-gray-700 dark:text-gray-200 hover:text-talento-600 dark:hover:text-talento-400 block px-3 py-2 text-base font-medium">Apply</a>
+<a
+href="#contact"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+Contact
+</a>
+<a
+href="#apply"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-talento-600 dark:hover:text-talento-400 transition-colors"
+>
+Apply
+</a>
 {user ? (
-<div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
-<div className="flex items-center px-3 py-2 mb-2">
-<div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center overflow-hidden ring-2 ring-talento-100 dark:ring-talento-800 mr-3">
+<div className="border-t border-gray-200 dark:border-gray-700/80 pt-2 mt-2">
+<div className="flex items-center px-3.5 py-2 mb-2">
+<div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden ring-2 ring-talento-100 dark:ring-talento-800 mr-3">
 {userProfile?.profile_photo_url ? (
 <img
 src={userProfile.profile_photo_url}
@@ -406,9 +449,9 @@ setCurrentView('dashboard');
 setInitialDashboardEditMode(false);
 setIsMenuOpen(false);
 }}
-className="flex items-center w-full text-left text-gray-700 dark:text-gray-200 px-3 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 transition-colors"
 >
-<User className="w-5 h-5 mr-3" />
+<User className="w-4 h-4 mr-3" />
 Dashboard
 </button>
 <button
@@ -417,9 +460,9 @@ setCurrentView('dashboard');
 setInitialDashboardEditMode(true);
 setIsMenuOpen(false);
 }}
-className="flex items-center w-full text-left text-gray-700 dark:text-gray-200 px-3 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/80 transition-colors"
 >
-<Settings className="w-5 h-5 mr-3" />
+<Settings className="w-4 h-4 mr-3" />
 Edit Profile
 </button>
 <button
@@ -427,22 +470,24 @@ onClick={() => {
 handleSignOut();
 setIsMenuOpen(false);
 }}
-className="flex items-center w-full text-left text-red-600 dark:text-red-400 px-3 py-2 text-base font-medium hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
 >
-<LogOut className="w-5 h-5 mr-3" />
+<LogOut className="w-4 h-4 mr-3" />
 Sign Out
 </button>
 </div>
 ) : (
+<div className="pt-2 px-1">
 <button
 onClick={() => {
 setCurrentView('auth');
 setIsMenuOpen(false);
 }}
-className="w-full text-left bg-talento-600 text-white px-3 py-2 text-base font-medium hover:bg-talento-700 transition-colors"
+className="w-full py-2.5 px-4 rounded-xl bg-talento-600 hover:bg-talento-700 active:scale-95 text-white text-sm font-medium text-center shadow-sm hover:shadow transition-all"
 >
 Sign In
 </button>
+</div>
 )}
 </div>
 </div>
@@ -456,8 +501,8 @@ className="relative bg-gradient-to-br from-slate-50 to-talento-50 dark:from-gray
 >
 {/* Animated background pattern */}
 <div className="absolute inset-0 opacity-10">
-<div className="absolute top-0 left-0 w-96 h-96 bg-talento-200 dark:bg-talento-800 rounded-full filter blur-3xl animate-pulse"></div>
-<div className="absolute bottom-0 right-0 w-96 h-96 bg-talento-300 dark:bg-talento-700 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+<div className="absolute top-0 left-0 w-96 h-96 bg-talento-200 dark:bg-talento-800 rounded-full filter blur-3xl animate-light-slow"></div>
+<div className="absolute bottom-0 right-0 w-96 h-96 bg-talento-300 dark:bg-talento-700 rounded-full filter blur-3xl animate-light-slow" style={{ animationDelay: '7s' }}></div>
 </div>
 
 {/* Animated connection lines - hidden on mobile for performance */}
@@ -465,8 +510,8 @@ className="relative bg-gradient-to-br from-slate-50 to-talento-50 dark:from-gray
 <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#3B82F6" stopOpacity="0.2" />
-<stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+<stop offset="0%" stopColor="#c2a26b" stopOpacity="0.3" />
+<stop offset="100%" stopColor="#c2a26b" stopOpacity="0.05" />
 </linearGradient>
 </defs>
 <path d="M100,200 Q400,100 700,200" stroke="url(#gradient)" strokeWidth="2" fill="none" className="animate-draw" />
@@ -479,24 +524,21 @@ className="relative bg-gradient-to-br from-slate-50 to-talento-50 dark:from-gray
 
 {/* Left Content */}
 <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left mb-12 lg:mb-0 pb-0">
-<div className="mb-4">
-<span className="inline-block px-4 py-1 bg-talento-100 dark:bg-talento-900/30 text-talento-700 dark:text-talento-400 rounded-full text-sm font-medium mb-4">
-Connecting Talent with Opportunity
+<h1 className="text-[1.7rem] min-[390px]:text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-[3.5rem] font-extrabold font-heading text-gray-900 dark:text-white mb-4 sm:mb-5 md:mb-6 tracking-tight leading-[1.18] sm:leading-[1.15] lg:leading-[1.12]">
+<span className="block sm:whitespace-nowrap">Scale your team with</span>
+<span className="block mt-1 sm:mt-1.5 bg-gradient-to-r from-talento-700 via-talento-600 to-talento-800 dark:from-talento-300 dark:via-talento-400 dark:to-talento-200 bg-clip-text text-transparent">
+high quality, vetted
 </span>
-</div>
-<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 leading-tight">
-Scale your team with<br />
-<span className="text-talento-600 dark:text-talento-400">high quality, vetted</span><br />
-professionals
+<span className="block mt-1 sm:mt-1.5">professionals</span>
 </h1>
-<p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6 md:mb-10 max-w-2xl lg:max-w-xl mx-auto lg:mx-0 leading-relaxed">
-From dynamic start-ups to multinational corporations, exceptional leadership is the key to success.
-<strong className="font-semibold"> TALENTO</strong> specializes in cultivating that leadership through strategic talent acquisition.
+<p className="text-[15px] sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300/90 mb-6 sm:mb-8 md:mb-10 max-w-2xl lg:max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans">
+From dynamic start-ups to multinational corporations, exceptional leadership is the key to success.{' '}
+<strong className="font-semibold text-talento-700 dark:text-talento-300">TALENTO</strong> specializes in cultivating that leadership through strategic talent acquisition.
 </p>
 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 lg:mb-10">
 <button
 onClick={() => window.open('https://job.talento.agency/', '_blank')}
-className="group relative overflow-hidden bg-talento-600 hover:bg-talento-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+className="group relative overflow-hidden bg-talento-600 hover:bg-talento-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-sans"
 >
 <span className="relative z-10 flex items-center">
 <Search className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -508,7 +550,7 @@ Explore Careers
 href="https://calendly.com/talentoagency2/30min"
 target="_blank"
 rel="noopener noreferrer"
-className="group relative overflow-hidden bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-talento-600 dark:text-talento-400 border border-talento-200 dark:border-gray-700 px-6 py-3 md:px-8 md:py-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1"
+className="group relative overflow-hidden bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-talento-600 dark:text-talento-400 border border-talento-200 dark:border-gray-700 px-6 py-3 md:px-8 md:py-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1 font-sans"
 >
 <span className="relative z-10 flex items-center">
 Schedule a Consultation
@@ -522,63 +564,31 @@ Schedule a Consultation
 {/* Stats bar - responsive */}
 <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
 <div className="text-center lg:text-left">
-<div className="text-2xl font-bold text-gray-900 dark:text-white">100+</div>
-<div className="text-sm text-gray-600 dark:text-gray-400">Placements</div>
+<div className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">100+</div>
+<div className="text-sm text-gray-600 dark:text-gray-400 font-sans">Placements</div>
 </div>
 <div className="text-center lg:text-left">
-<div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-<div className="text-sm text-gray-600 dark:text-gray-400">Success Rate</div>
+<div className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">95%</div>
+<div className="text-sm text-gray-600 dark:text-gray-400 font-sans">Success Rate</div>
 </div>
 <div className="text-center lg:text-left">
-<div className="text-2xl font-bold text-gray-900 dark:text-white">15+</div>
-<div className="text-sm text-gray-600 dark:text-gray-400">Industries</div>
+<div className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">15+</div>
+<div className="text-sm text-gray-600 dark:text-gray-400 font-sans">Industries</div>
 </div>
 </div>
 </div>
 
-{/* Right Image - with professional animation */}
-<div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end items-center mt-0 lg:mt-0">
-
-{/* Animated nodes - hidden on mobile */}
-<div className="hidden lg:block absolute inset-0 pointer-events-none">
-<div className="absolute top-1/4 left-1/4 w-3 h-3 bg-talento-400 dark:bg-talento-600 rounded-full animate-pulse"></div>
-<div className="absolute top-1/3 right-1/4 w-3 h-3 bg-talento-400 dark:bg-talento-600 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-<div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-talento-400 dark:bg-talento-600 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-<div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-talento-400 dark:bg-talento-600 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-</div>
-
-{/* Image container with enhanced animation effects */}
-<div className="relative p-1 sm:p-2 lg:p-1 rounded-3xl shadow-2xl bg-gradient-to-br from-white/70 to-white/30 dark:from-gray-800/70 dark:to-gray-900/30 backdrop-blur-md border border-white/50 dark:border-gray-700/50 w-[85%] sm:w-[75%] md:w-[65%] lg:w-full overflow-hidden">
-
-{/* Gradient overlay for depth */}
-<div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-talento-100/30 dark:from-talento-900/30 to-transparent"></div>
-
-{/* Animated glowing ring behind image */}
-<div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-talento-300/40 dark:from-talento-700/40 via-talento-200/30 dark:via-talento-800/30 to-transparent blur-3xl animate-pulse-slow"></div>
-
-{/* Subtle orbit animation elements */}
-<div className="absolute inset-0 flex items-center justify-center">
-<div className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] border border-talento-300/20 dark:border-talento-700/20 rounded-full animate-spin-slow"></div>
-<div className="absolute w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] border border-talento-400/10 dark:border-talento-600/10 rounded-full animate-reverse-spin-slow"></div>
-</div>
-
-{/* Main image */}
-<div className="relative overflow-hidden rounded-3xl z-10">
-<img
-src="/talento.hero.webp"
-alt="Talento Hero"
-className="w-full h-auto object-contain rounded-3xl transition-transform duration-700 hover:scale-105"
-/>
-<div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-3xl"></div>
-</div>
-</div>
+{/* Right Visual - layered, animated composition (see components/HeroVisual.tsx) */}
+<div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end items-center">
+<HeroVisual />
 </div>
 </div>
 </div>
 </section>
 
 {/* Services Section */}
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white dark:bg-gray-900 transition-colors duration-200">
+<section id="services" className="py-16 bg-white dark:bg-gray-900 transition-colors duration-200">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 {/* Section Header */}
 <div className="text-center mb-16">
 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Specialized Services</h2>
@@ -677,8 +687,9 @@ Comprehensive talent acquisition solutions tailored to your organization's uniqu
 </div>
 </div>
 </div>
+</section>
 
-<section id="industries" className="py-16 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
+<section id="industries" className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="text-center mb-16">
 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Industries Expertise</h2>
@@ -690,7 +701,7 @@ We work across dynamic sectors, connecting exceptional talent with forward-think
 </div>
 
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <Building className="w-7 h-7" />
 </div>
@@ -699,7 +710,7 @@ Tech Business | Start-ups
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
@@ -712,7 +723,7 @@ Apparel Business
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
@@ -725,7 +736,7 @@ Healthcare & Life Science
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
@@ -737,7 +748,7 @@ FMCG & Marketplaces
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
@@ -752,7 +763,7 @@ Hospitality
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
@@ -763,7 +774,7 @@ NGO & International Organizations
 </h3>
 </div>
 
-<div className="bg-white dark:bg-gray-700 p-6 rounded-lg hover:bg-talento-50 dark:hover:bg-gray-600 transition-colors group">
+<div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 p-6 rounded-xl hover:bg-talento-50 dark:hover:bg-[#1f2220] transition-colors group">
 <div className="text-gray-600 dark:text-gray-300 group-hover:text-talento-600 dark:group-hover:text-talento-400 mb-3 transition-colors">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
 <path d="M7 20h10"></path>
@@ -781,7 +792,7 @@ Agri-Business
 </section>
 
 {/* About Section */}
-<section id="about" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
+<section id="about" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div>
@@ -828,24 +839,27 @@ As a boutique firm, we provide personalized attention and deep industry expertis
 </div>
 
 <div className="relative">
-<div className="bg-talento-600 rounded-2xl p-8 text-white">
-<h3 className="text-2xl font-bold mb-6">Our Track Record</h3>
+<div className="bg-gray-800 rounded-2xl p-8 text-white border border-talento-500/30 shadow-xl">
+<h3 className="text-2xl font-bold mb-6 text-white flex items-center">
+  <span className="w-2.5 h-2.5 rounded-full bg-talento-500 mr-3 animate-pulse"></span>
+  Our Track Record
+</h3>
 <div className="grid grid-cols-2 gap-6">
-<div className="text-center">
-<div className="text-3xl font-bold mb-2">100+</div>
-<div className="text-talento-100">Successful Placements</div>
+<div className="text-center p-3 rounded-xl bg-gray-900/80 border border-gray-700/60">
+<div className="text-3xl font-extrabold font-mono tracking-tight mb-1 text-talento-400">100+</div>
+<div className="text-sm text-gray-300 font-sans">Successful Placements</div>
 </div>
-<div className="text-center">
-<div className="text-3xl font-bold mb-2">95%</div>
-<div className="text-talento-100">Client Satisfaction</div>
+<div className="text-center p-3 rounded-xl bg-gray-900/80 border border-gray-700/60">
+<div className="text-3xl font-extrabold font-mono tracking-tight mb-1 text-talento-400">95%</div>
+<div className="text-sm text-gray-300 font-sans">Client Satisfaction</div>
 </div>
-<div className="text-center">
-<div className="text-3xl font-bold mb-2">10+</div>
-<div className="text-talento-100">Partner Companies</div>
+<div className="text-center p-3 rounded-xl bg-gray-900/80 border border-gray-700/60">
+<div className="text-3xl font-extrabold font-mono tracking-tight mb-1 text-talento-400">10+</div>
+<div className="text-sm text-gray-300 font-sans">Partner Companies</div>
 </div>
-<div className="text-center">
-<div className="text-3xl font-bold mb-2">15+</div>
-<div className="text-talento-100">Industry Sectors</div>
+<div className="text-center p-3 rounded-xl bg-gray-900/80 border border-gray-700/60">
+<div className="text-3xl font-extrabold font-mono tracking-tight mb-1 text-talento-400">15+</div>
+<div className="text-sm text-gray-300 font-sans">Industry Sectors</div>
 </div>
 </div>
 </div>
@@ -884,7 +898,6 @@ Ready to find exceptional talent? Contact us to discuss how we can help you buil
 <div>
 <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
 <p className="text-gray-600 dark:text-gray-300">+880 1973 591514</p>
-<p className="text-gray-600 dark:text-gray-300">+880 1341 749853</p>
 </div>
 </div>
 
@@ -912,7 +925,7 @@ linkedin.com/talento-agency
 </div>
 </div>
 </div>
-<div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl transition-colors duration-200">
+<div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700/60 shadow-sm transition-colors duration-200">
 <form onSubmit={handleContactSubmit} className="space-y-6">
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
@@ -925,7 +938,7 @@ id="contact-name"
 required
 value={contactForm.full_name}
 onChange={(e) => setContactForm({...contactForm, full_name: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your full name"
 />
 </div>
@@ -940,7 +953,7 @@ id="contact-email"
 required
 value={contactForm.email}
 onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="your.email@company.com"
 />
 </div>
@@ -955,7 +968,7 @@ type="text"
 id="contact-company"
 value={contactForm.company}
 onChange={(e) => setContactForm({...contactForm, company: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your company name"
 />
 </div>
@@ -970,7 +983,7 @@ rows={4}
 required
 value={contactForm.message}
 onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors resize-none"
 placeholder="Tell us about your hiring needs..."
 />
 </div>
@@ -1012,7 +1025,7 @@ Sending...
 </section>
 
 {/* Candidate Application Section */}
-<section id="apply" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
+<section id="apply" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="text-center mb-16">
 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1022,7 +1035,7 @@ Join Our Talent Network
 Are you an exceptional professional looking for your next career opportunity? Submit your application to be considered for exclusive positions.
 </p>
 </div>
-<div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 transition-colors duration-200">
+<div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700/60 transition-colors duration-200">
 <form onSubmit={handleCandidateSubmit} className="space-y-6">
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
@@ -1036,7 +1049,7 @@ id="candidate-name"
 required
 value={candidateForm.full_name}
 onChange={(e) => setCandidateForm({...candidateForm, full_name: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your full name"
 />
 </div>
@@ -1052,7 +1065,7 @@ id="candidate-citizenship"
 required
 value={candidateForm.citizenship}
 onChange={(e) => setCandidateForm({...candidateForm, citizenship: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your citizenship"
 />
 </div>
@@ -1069,7 +1082,7 @@ id="candidate-phone"
 required
 value={candidateForm.phone}
 onChange={(e) => setCandidateForm({...candidateForm, phone: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="+880 1234 567890"
 />
 </div>
@@ -1085,7 +1098,7 @@ id="candidate-email"
 required
 value={candidateForm.email}
 onChange={(e) => setCandidateForm({...candidateForm, email: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="your.email@example.com"
 />
 </div>
@@ -1101,7 +1114,7 @@ id="candidate-role"
 required
 value={candidateForm.main_role}
 onChange={(e) => setCandidateForm({...candidateForm, main_role: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 >
 <option value="">Select your main role</option>
 <option value="Executive/C-Suite">Executive/C-Suite</option>
@@ -1123,7 +1136,7 @@ id="candidate-sector"
 required
 value={candidateForm.business_sector}
 onChange={(e) => setCandidateForm({...candidateForm, business_sector: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 >
 <option value="">Select business sector</option>
 <option value="Technology">Technology</option>
@@ -1148,7 +1161,7 @@ id="candidate-title"
 required
 value={candidateForm.job_title}
 onChange={(e) => setCandidateForm({...candidateForm, job_title: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your current job title"
 />
 </div>
@@ -1163,7 +1176,7 @@ id="candidate-employer"
 required
 value={candidateForm.current_employer}
 onChange={(e) => setCandidateForm({...candidateForm, current_employer: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="Your current company"
 />
 </div>
@@ -1179,7 +1192,7 @@ id="candidate-linkedin"
 required
 value={candidateForm.linkedin_url}
 onChange={(e) => setCandidateForm({...candidateForm, linkedin_url: e.target.value})}
-className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
+className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-colors"
 placeholder="https://linkedin.com/in/yourprofile"
 />
 </div>
@@ -1188,7 +1201,7 @@ placeholder="https://linkedin.com/in/yourprofile"
 <FileText className="inline w-4 h-4 mr-1" />
 Upload CV/Resume
 </label>
-<div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg hover:border-talento-400 dark:hover:border-talento-600 transition-colors">
+<div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-700 border-dashed rounded-lg bg-gray-50/50 dark:bg-gray-900/50 hover:border-talento-400 dark:hover:border-talento-500 transition-colors">
 <div className="space-y-1 text-center">
 <Upload className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" />
 <div className="flex text-sm text-gray-600 dark:text-gray-400">
@@ -1253,11 +1266,11 @@ Submitting Application...
 </section>
 
 {/* Footer */}
-<footer className="bg-gray-900 dark:bg-black text-white py-12 transition-colors duration-200">
+<footer className="bg-gray-900 text-white py-12 border-t border-gray-800 transition-colors duration-200">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div className="col-span-1 md:col-span-2">
-<img src="/logo.png" alt="TALENTO" className="h-10 w-auto mb-4" />
+<img src="/logo.png" alt="TALENTO" className="h-10 w-auto rounded-lg mb-4" />
 <p className="text-gray-300 dark:text-gray-400 leading-relaxed max-w-md">
 TALENTO is a boutique headhunting firm specializing in executive search and leadership recruitment. We connect exceptional talent with forward-thinking organizations.
 </p>

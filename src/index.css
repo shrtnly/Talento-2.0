@@ -1,15 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark mode base styles */
+/* Base typography and theme setup */
 @layer base {
   html {
+    scroll-behavior: smooth;
     color-scheme: light;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  code, kbd, samp, pre {
+    font-family: 'Consolas', 'Courier New', monospace;
   }
   
   html.dark {
     color-scheme: dark;
+    background-color: #131413;
+  }
+
+  html.dark body {
+    background-color: #131413;
+    color: #eff1ef;
   }
   
   /* Custom animations */
@@ -116,8 +141,24 @@
     animation: reverse-spin-slow 15s linear infinite;
   }
 
+  @keyframes light-glow-slow {
+    0%, 100% {
+      opacity: 0.25;
+      transform: scale(1) translate(0, 0);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1) translate(1.5%, -1.5%);
+    }
+  }
+
   .animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
+    animation: pulse-slow 12s ease-in-out infinite;
+  }
+
+  .animate-light-slow {
+    animation: light-glow-slow 14s ease-in-out infinite;
+    will-change: opacity, transform;
   }
 
   .line-clamp-2 {
@@ -131,10 +172,168 @@
 
 /* Additional dark mode utilities if needed */
 .dark {
-  /* Custom dark mode styles that aren't covered by Tailwind */
+  color-scheme: dark;
+}
+
+html.dark .dark\:bg-black {
+  background-color: #0d0e0d;
+}
+
+/* Custom dark mode scrollbar */
+html.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #131413;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #252826;
+  border-radius: 5px;
+  border: 2px solid #131413;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #c2a26b;
+}
+
+html.dark ::selection {
+  background-color: #c2a26b;
+  color: #131413;
+}
+
+::selection {
+  background-color: #f6ecd8;
+  color: #7e6030;
 }
 
 /* Smooth transitions for theme switching */
 * {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  .font-manrope {
+    font-family: 'Manrope', 'Inter', sans-serif;
+  }
+  .font-consolas {
+    font-family: 'Consolas', 'Courier New', monospace;
+  }
+}
+
+/* ============================================================
+   HERO VISUAL – orbit rings, floating UI, entrance choreography
+   ============================================================ */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-spin-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes ui-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-3.5%) rotate(-1.2deg); }
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12%) rotate(1.5deg); }
+}
+
+@keyframes hero-enter-orbit {
+  from { opacity: 0; transform: scale(0.82) rotate(-25deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes hero-enter-up {
+  from { opacity: 0; transform: translateY(6%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-enter-left {
+  from { opacity: 0; transform: translateX(-14%) rotate(-4deg); }
+  to   { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes hero-enter-pop {
+  0%   { opacity: 0; transform: scale(0.6) translateY(20%); }
+  70%  { opacity: 1; transform: scale(1.06) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes hero-enter-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.orbit-spin {
+  animation: orbit-spin 60s linear infinite;
+  will-change: transform;
+}
+
+.orbit-spin-reverse {
+  animation: orbit-spin-reverse 50s linear infinite;
+  will-change: transform;
+}
+
+.ui-float {
+  animation: ui-float 6s ease-in-out 1.2s infinite;
+  will-change: transform;
+}
+
+.badge-float {
+  animation: badge-float 4.5s ease-in-out 1.6s infinite;
+  will-change: transform;
+}
+
+.hero-enter-orbit,
+.hero-enter-up,
+.hero-enter-left,
+.hero-enter-pop,
+.hero-enter-fade {
+  opacity: 0;
+  animation-duration: 1.1s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+}
+.hero-enter-orbit { animation-name: hero-enter-orbit; animation-duration: 1.6s; }
+.hero-enter-up    { animation-name: hero-enter-up; }
+.hero-enter-left  { animation-name: hero-enter-left; }
+.hero-enter-pop   { animation-name: hero-enter-pop; animation-duration: 0.9s; }
+.hero-enter-fade  { animation-name: hero-enter-fade; }
+
+/* Parallax layers glide smoothly back to rest */
+.parallax-layer {
+  transition: translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The global `*` colour transition must not fight hero animations */
+.hero-stage img {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin,
+  .orbit-spin-reverse,
+  .ui-float,
+  .badge-float {
+    animation: none;
+  }
+  .hero-enter-orbit,
+  .hero-enter-up,
+  .hero-enter-left,
+  .hero-enter-pop,
+  .hero-enter-fade {
+    animation: none;
+    opacity: 1;
+  }
 }

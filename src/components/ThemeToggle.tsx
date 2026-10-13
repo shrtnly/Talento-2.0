@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
-    // Check for saved theme preference or default to light mode
+    // Check for saved theme preference or default to dark mode
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'light';
+      return localStorage.getItem('theme') || 'dark';
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {
@@ -27,43 +28,35 @@ const ThemeToggle = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const isDark = theme === 'dark';
+
   return (
     <button
+      type="button"
       onClick={handleThemeSwitch}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 dark:focus:ring-offset-gray-800 transition-colors duration-200"
-      aria-label="Toggle theme"
+      className="relative flex items-center justify-center w-9 h-9 rounded-full bg-white/90 dark:bg-[#181A19] border border-gray-200/90 dark:border-gray-800 text-gray-700 dark:text-talento-300 shadow-sm hover:shadow hover:bg-gray-100 dark:hover:bg-[#202321] hover:border-gray-300 dark:hover:border-gray-700 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-talento-500/50"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {theme === 'dark' ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 3v1m0 16v1m9-9h1M4 12H3m15.325 7.675l-.707-.707M6.314 6.314l-.707-.707m12.728 0l-.707.707M6.314 17.686l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-          />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      )}
+      {/* Sun icon: visible in dark mode, smoothly rotates & expands */}
+      <Sun
+        className={`w-[18px] h-[18px] text-talento-400 dark:text-talento-300 transition-all duration-300 ease-out absolute ${
+          isDark
+            ? 'rotate-0 scale-100 opacity-100'
+            : 'rotate-90 scale-0 opacity-0 pointer-events-none'
+        }`}
+        strokeWidth={1.75}
+      />
+
+      {/* Moon icon: visible in light mode, smoothly rotates & expands */}
+      <Moon
+        className={`w-[18px] h-[18px] text-gray-700 dark:text-gray-300 transition-all duration-300 ease-out absolute ${
+          isDark
+            ? '-rotate-90 scale-0 opacity-0 pointer-events-none'
+            : 'rotate-0 scale-100 opacity-100'
+        }`}
+        strokeWidth={1.75}
+      />
     </button>
   );
 };

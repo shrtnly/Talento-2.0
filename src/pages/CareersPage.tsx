@@ -21,8 +21,8 @@ import {
   Target,
   BookOpen,
   Headphones,
-  Share2
 } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 
 interface CareersPageProps {
   onBack: () => void;
@@ -238,18 +238,18 @@ Best regards,
     return (
       <div 
         key={job.id} 
-        className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-talento-200 cursor-pointer"
+        className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 dark:border-gray-700/60 hover:shadow-lg transition-all duration-300 hover:border-talento-300 dark:hover:border-talento-500/40 cursor-pointer"
         onClick={() => handleViewJobDetails(job)}
       >
         <div className="flex flex-col sm:flex-row justify-between items-start mb-6">
           <div className="mb-4 sm:mb-0">
             <div className="flex items-center mb-2">
-              <h3 className="text-xl font-semibold text-gray-900 mr-3">{job.title}</h3>
+              <h3 className="text-xl font-semibold font-heading text-gray-900 dark:text-white mr-3">{job.title}</h3>
               <span className={`text-xs px-2 py-1 rounded-full ${active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                 {active ? 'Active' : 'Expired'}
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
               <div className="flex items-center">
                 <Building className="w-4 h-4 mr-1" />
                 {job.department}
@@ -266,7 +266,7 @@ Best regards,
           </div>
           <div className="text-left sm:text-right">
             {job.salaryRange && (
-              <div className="flex items-center text-talento-600 font-semibold mb-1">
+              <div className="flex items-center text-talento-600 dark:text-talento-400 font-semibold font-mono tracking-tight mb-1">
                 {job.salaryRange}
               </div>
             )}
@@ -280,9 +280,9 @@ Best regards,
             </div>
           </div>
         </div>
-        <p className="text-gray-600 mb-6 leading-relaxed">{job.description}</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{job.description}</p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center text-sm text-gray-500">
+          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <Calendar className="w-4 h-4 mr-1" />
             Apply by {new Date(job.deadline).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
@@ -322,18 +322,18 @@ Best regards,
     const active = isJobActive(job.deadline);
     
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="sticky top-0 bg-white border-b border-gray-100 p-6 rounded-t-2xl">
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-100 dark:border-gray-700/80 shadow-2xl">
+          <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-6 rounded-t-2xl z-10">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <div className="flex items-center mb-2">
-                  <h2 className="text-2xl font-bold text-gray-900 mr-3">{job.title}</h2>
+                  <h2 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mr-3">{job.title}</h2>
                   <span className={`text-xs px-2 py-1 rounded-full ${active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                     {active ? 'Active' : 'Expired'}
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
                   <div className="flex items-center">
                     <Building className="w-4 h-4 mr-1" />
                     {job.department}
@@ -457,20 +457,23 @@ Best regards,
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-100">
+      <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <button
                 onClick={onBack}
-                className="inline-flex items-center text-talento-600 hover:text-talento-700 transition-colors mr-6 font-medium"
+                className="inline-flex items-center text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors mr-6 font-medium"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
               </button>
-              <img src="/logo.jpg" alt="TALENTO" className="h-10 w-auto" />
+              <img src="/logo.png" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
+            </div>
+            <div className="flex items-center">
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -495,8 +498,8 @@ Best regards,
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Open Positions</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Open Positions</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Discover exciting opportunities to grow your career with us. We're always looking for talented individuals to join our team.
           </p>
         </div>

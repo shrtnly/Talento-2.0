@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { DatabaseService } from '../services/database';
 import type { UserProfile, AuthUser } from '../lib/supabase';
+import ThemeToggle from '../components/ThemeToggle';
 
 interface DashboardPageProps {
   user: AuthUser;
@@ -320,67 +321,67 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Profile Views</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.profileViews}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Profile Views</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.profileViews}</p>
             </div>
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Eye className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+              <Eye className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
             <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-            <span className="text-green-600">+12% from last month</span>
+            <span className="text-green-600 dark:text-green-400 font-mono text-xs">+12% from last month</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Applications</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.applications}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Applications</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.applications}</p>
             </div>
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <FileText className="w-6 h-6 text-purple-600" />
+            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+              <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
             <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-            <span className="text-green-600">+3 this week</span>
+            <span className="text-green-600 dark:text-green-400 font-mono text-xs">+3 this week</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Interviews</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.interviews}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Interviews</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.interviews}</p>
             </div>
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-green-600" />
+            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-green-600 dark:text-green-400" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
             <Calendar className="w-4 h-4 text-blue-500 mr-1" />
-            <span className="text-blue-600">1 scheduled</span>
+            <span className="text-blue-600 dark:text-blue-400 font-mono text-xs">1 scheduled</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Offers</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.offers}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Offers</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.offers}</p>
             </div>
-            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-              <Award className="w-6 h-6 text-yellow-600" />
+            <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center">
+              <Award className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
             <Star className="w-4 h-4 text-yellow-500 mr-1" />
-            <span className="text-yellow-600">Pending review</span>
+            <span className="text-yellow-600 dark:text-yellow-400">Pending review</span>
           </div>
         </div>
       </div>
@@ -388,14 +389,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       {/* Profile Completion & Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Profile Completion */}
-        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-900">Profile Completion</h3>
-            <span className="text-2xl font-bold text-talento-600">{completionPercentage}%</span>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Profile Completion</h3>
+            <span className="text-2xl font-bold font-mono tracking-tight text-talento-600 dark:text-talento-400">{completionPercentage}%</span>
           </div>
           
           <div className="mb-6">
-            <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
               <div 
                 className="bg-gradient-to-r from-talento-500 to-talento-600 h-3 rounded-full transition-all duration-500"
                 style={{ width: `${completionPercentage}%` }}
@@ -410,16 +411,16 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                   {item.completed ? (
                     <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                   ) : (
-                    <div className="w-5 h-5 border-2 border-gray-300 rounded-full mr-3"></div>
+                    <div className="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 rounded-full mr-3"></div>
                   )}
-                  <span className={`text-sm ${item.completed ? 'text-gray-900' : 'text-gray-500'}`}>
+                  <span className={`text-sm ${item.completed ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                     {item.label}
                   </span>
                 </div>
                 {!item.completed && (
                   <button 
                     onClick={() => setActiveTab('profile')}
-                    className="text-xs text-talento-600 hover:text-talento-700 font-medium"
+                    className="text-xs text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 font-medium"
                   >
                     Complete
                   </button>
@@ -429,8 +430,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           {completionPercentage < 100 && (
-            <div className="mt-6 p-4 bg-talento-50 rounded-lg">
-              <p className="text-sm text-talento-700">
+            <div className="mt-6 p-4 bg-talento-50 dark:bg-talento-900/30 rounded-lg border border-transparent dark:border-talento-500/20">
+              <p className="text-sm text-talento-700 dark:text-talento-300">
                 <strong>Tip:</strong> Complete your profile to increase visibility by up to 40%!
               </p>
             </div>
@@ -438,10 +439,10 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-900">Recent Activity</h3>
-            <button className="text-sm text-talento-600 hover:text-talento-700 font-medium">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Activity</h3>
+            <button className="text-sm text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 font-medium">
               View All
             </button>
           </div>
@@ -449,15 +450,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           <div className="space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-talento-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  {activity.type === 'profile_view' && <Eye className="w-4 h-4 text-talento-600" />}
-                  {activity.type === 'application' && <FileText className="w-4 h-4 text-talento-600" />}
-                  {activity.type === 'interview' && <Calendar className="w-4 h-4 text-talento-600" />}
-                  {activity.type === 'message' && <MessageSquare className="w-4 h-4 text-talento-600" />}
+                <div className="w-8 h-8 bg-talento-100 dark:bg-talento-900/40 rounded-full flex items-center justify-center flex-shrink-0">
+                  {activity.type === 'profile_view' && <Eye className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
+                  {activity.type === 'application' && <FileText className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
+                  {activity.type === 'interview' && <Calendar className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
+                  {activity.type === 'message' && <MessageSquare className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-gray-900">{activity.message}</p>
-                  <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
+                  <p className="text-sm text-gray-900 dark:text-white">{activity.message}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{activity.time}</p>
                 </div>
               </div>
             ))}
@@ -470,12 +471,12 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   const renderProfileTab = () => (
     <div className="space-y-8">
       {/* Profile Header */}
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900">Profile Information</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Profile Information</h2>
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500">Completion:</span>
-            <span className="text-sm font-semibold text-talento-600">{completionPercentage}%</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">Completion:</span>
+            <span className="text-sm font-semibold text-talento-600 dark:text-talento-400">{completionPercentage}%</span>
           </div>
         </div>
         
@@ -518,7 +519,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
         {/* Basic Information Form */}
         <form onSubmit={handleProfileUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Full Name *
             </label>
             <div className="relative">
@@ -531,14 +532,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 defaultValue={profile?.full_name || ''}
                 required
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Your full name"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Email Address
             </label>
             <div className="relative">
@@ -551,13 +552,13 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="email"
                 value={user.email || ''}
                 disabled
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-gray-50 text-gray-500 cursor-not-allowed"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 cursor-not-allowed"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Phone Number
             </label>
             <div className="relative">
@@ -570,14 +571,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="tel"
                 value={profileData.phone}
                 onChange={(e) => setProfileData(prev => ({ ...prev, phone: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Location
             </label>
             <div className="relative">
@@ -590,14 +591,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.location}
                 onChange={(e) => setProfileData(prev => ({ ...prev, location: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="City, Country"
               />
             </div>
           </div>
 
           <div className="md:col-span-2">
-            <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="bio" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Professional Summary
             </label>
             <textarea
@@ -606,7 +607,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               rows={4}
               value={profileData.bio}
               onChange={(e) => setProfileData(prev => ({ ...prev, bio: e.target.value }))}
-              className="block w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white resize-none"
+              className="block w-full px-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900 resize-none"
               placeholder="Write a brief summary about your professional background and career goals..."
             />
           </div>
@@ -652,12 +653,12 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       </div>
 
       {/* Professional Information */}
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-900 mb-6">Professional Information</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Professional Information</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Current Company
             </label>
             <div className="relative">
@@ -670,14 +671,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.company}
                 onChange={(e) => setProfileData(prev => ({ ...prev, company: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Company name"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="position" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="position" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Current Position
             </label>
             <div className="relative">
@@ -690,14 +691,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.position}
                 onChange={(e) => setProfileData(prev => ({ ...prev, position: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Job title"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="experience" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Years of Experience
             </label>
             <select
@@ -705,7 +706,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               name="experience"
               value={profileData.experience}
               onChange={(e) => setProfileData(prev => ({ ...prev, experience: e.target.value }))}
-              className="block w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+              className="block w-full px-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
             >
               <option value="">Select experience level</option>
               <option value="0-1">0-1 years</option>
@@ -717,7 +718,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           <div>
-            <label htmlFor="education" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="education" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Education
             </label>
             <div className="relative">
@@ -730,14 +731,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.education}
                 onChange={(e) => setProfileData(prev => ({ ...prev, education: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Degree, University"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               LinkedIn Profile
             </label>
             <div className="relative">
@@ -750,14 +751,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="url"
                 value={profileData.linkedin}
                 onChange={(e) => setProfileData(prev => ({ ...prev, linkedin: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="https://linkedin.com/in/yourprofile"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="website" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Personal Website
             </label>
             <div className="relative">
@@ -770,7 +771,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="url"
                 value={profileData.website}
                 onChange={(e) => setProfileData(prev => ({ ...prev, website: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="https://yourwebsite.com"
               />
             </div>
@@ -783,15 +784,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   const renderSecurityTab = () => (
     <div className="space-y-8">
       {/* Change Password */}
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
         <div className="flex items-center mb-6">
-          <Shield className="w-6 h-6 text-talento-600 mr-3" />
-          <h2 className="text-2xl font-semibold text-gray-900">Security Settings</h2>
+          <Shield className="w-6 h-6 text-talento-600 dark:text-talento-400 mr-3" />
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Security Settings</h2>
         </div>
         
         <form onSubmit={handlePasswordUpdate} className="space-y-6 max-w-md">
           <div>
-            <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               New Password
             </label>
             <div className="relative">
@@ -803,7 +804,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 name="newPassword"
                 type={showNewPassword ? 'text' : 'password'}
                 required
-                className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Enter new password"
               />
               <button
@@ -821,7 +822,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Confirm New Password
             </label>
             <div className="relative">
@@ -833,7 +834,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 name="confirmPassword"
                 type={showConfirmPassword ? 'text' : 'password'}
                 required
-                className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                className="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
                 placeholder="Confirm new password"
               />
               <button
@@ -851,19 +852,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           {passwordError && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-850 rounded-xl p-4">
               <div className="flex items-center">
                 <AlertCircle className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-red-700 text-sm">{passwordError}</p>
+                <p className="text-red-700 dark:text-red-400 text-sm">{passwordError}</p>
               </div>
             </div>
           )}
 
           {passwordSuccess && (
-            <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+            <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/40 rounded-xl p-4">
               <div className="flex items-center">
                 <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-green-700 text-sm">{passwordSuccess}</p>
+                <p className="text-green-700 dark:text-green-400 text-sm">{passwordSuccess}</p>
               </div>
             </div>
           )}
@@ -889,26 +890,26 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       </div>
 
       {/* Account Security Info */}
-      <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-900 mb-6">Account Security</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Account Security</h3>
         
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+          <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800/40">
             <div className="flex items-center">
               <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
               <div>
-                <p className="text-sm font-medium text-green-800">Email Verified</p>
-                <p className="text-xs text-green-600">Your email address has been verified</p>
+                <p className="text-sm font-medium text-green-800 dark:text-green-300">Email Verified</p>
+                <p className="text-xs text-green-600 dark:text-green-400">Your email address has been verified</p>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800/40">
             <div className="flex items-center">
               <Shield className="w-5 h-5 text-blue-500 mr-3" />
               <div>
-                <p className="text-sm font-medium text-blue-800">Secure Password</p>
-                <p className="text-xs text-blue-600">Your password meets security requirements</p>
+                <p className="text-sm font-medium text-blue-800 dark:text-blue-300">Secure Password</p>
+                <p className="text-xs text-blue-600 dark:text-blue-400">Your password meets security requirements</p>
               </div>
             </div>
           </div>
@@ -918,28 +919,31 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-100 backdrop-blur-sm bg-white/95 sticky top-0 z-40">
+      <div className="bg-white/95 dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 backdrop-blur-sm sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <button
                 onClick={onBack}
-                className="inline-flex items-center text-talento-600 hover:text-talento-700 transition-colors mr-6 font-medium"
+                className="inline-flex items-center text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors mr-6 font-medium"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
               </button>
-              <img src="/logo.jpg" alt="TALENTO" className="h-10 w-auto" />
+              <img src="/logo.png" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 sm:space-x-4">
+              {/* Theme Toggle */}
+              <ThemeToggle />
+
               {/* Notifications */}
               <div className="relative" ref={notificationRef}>
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="relative p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
                 >
                   <Bell className="w-6 h-6" />
                   {notifications.some(n => n.unread) && (
@@ -948,20 +952,20 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 </button>
 
                 {showNotifications && (
-                  <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 max-h-96 overflow-y-auto">
-                    <div className="px-4 py-2 border-b border-gray-100">
-                      <h3 className="text-sm font-semibold text-gray-900">Notifications</h3>
+                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50 max-h-96 overflow-y-auto">
+                    <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">Notifications</h3>
                     </div>
                     {notifications.map((notification) => (
-                      <div key={notification.id} className={`px-4 py-3 hover:bg-gray-50 transition-colors ${notification.unread ? 'bg-blue-50' : ''}`}>
+                      <div key={notification.id} className={`px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors ${notification.unread ? 'bg-blue-50 dark:bg-blue-950/40' : ''}`}>
                         <div className="flex items-start">
                           <div className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
                             notification.type === 'success' ? 'bg-green-500' :
                             notification.type === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'
                           }`}></div>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-900">{notification.title}</p>
-                            <p className="text-xs text-gray-600 mt-1">{notification.message}</p>
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">{notification.title}</p>
+                            <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">{notification.message}</p>
                           </div>
                         </div>
                       </div>
@@ -974,9 +978,9 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-gray-50 transition-colors"
+                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden ring-2 ring-talento-100">
+                  <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden ring-2 ring-talento-100 dark:ring-talento-500/30">
                     {profile?.profile_photo_url ? (
                       <img
                         src={profile.profile_photo_url}
@@ -988,22 +992,22 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                     )}
                   </div>
                   <div className="hidden sm:block text-left">
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">
                       {profile?.full_name || 'User'}
                     </p>
-                    <p className="text-xs text-gray-500">{user.email}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
                   </div>
                   <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
                 {showDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
                     <button
                       onClick={() => {
                         setActiveTab('profile');
                         setShowDropdown(false);
                       }}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Settings className="w-4 h-4 mr-3" />
                       Edit Profile
@@ -1013,15 +1017,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                         setActiveTab('security');
                         setShowDropdown(false);
                       }}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Shield className="w-4 h-4 mr-3" />
                       Security
                     </button>
-                    <hr className="my-1 border-gray-100" />
+                    <hr className="my-1 border-gray-100 dark:border-gray-700" />
                     <button
                       onClick={handleSignOut}
-                      className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
                     >
                       <LogOut className="w-4 h-4 mr-3" />
                       Sign Out
@@ -1043,8 +1047,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('overview')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'overview'
-                  ? 'border-talento-500 text-talento-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
             >
               <div className="flex items-center">
@@ -1056,8 +1060,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('profile')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'profile'
-                  ? 'border-talento-500 text-talento-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
             >
               <div className="flex items-center">
@@ -1069,8 +1073,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('security')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'security'
-                  ? 'border-talento-500 text-talento-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
+                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
             >
               <div className="flex items-center">
