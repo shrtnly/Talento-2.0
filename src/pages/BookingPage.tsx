@@ -28,12 +28,12 @@ export function BookingPage({ onBack }: BookingPageProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-[#F7F4EC] dark:bg-[#0A1A30] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={onBack}
-            className="inline-flex items-center text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors"
+            className="inline-flex items-center text-[#7A5F2E] dark:text-[#C2A26B] hover:underline transition-colors font-medium"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back
@@ -41,8 +41,8 @@ export function BookingPage({ onBack }: BookingPageProps) {
           <ThemeToggle />
         </div>
         
-        <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700/60 rounded-xl shadow-lg p-6">
-          <h1 className="text-3xl font-bold font-heading text-gray-900 dark:text-white mb-6">Schedule a Consultation</h1>
+        <div className="bg-white dark:bg-[#1C2B44] border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/10 rounded-2xl shadow-lg p-6">
+          <h1 className="text-3xl font-bold font-heading text-[#0A1A30] dark:text-white mb-6">Schedule a Consultation</h1>
           <div id="calendly-container" style={{ minHeight: '700px' }}></div>
         </div>
       </div>

@@ -282,10 +282,10 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
 
   if (isLoadingProfile) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-[#F7F4EC] dark:bg-[#0A1A30] flex items-center justify-center">
         <div className="text-center">
-          <Loader className="w-8 h-8 animate-spin text-talento-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading your dashboard...</p>
+          <Loader className="w-8 h-8 animate-spin text-[#C2A26B] mx-auto mb-4" />
+          <p className="text-[#4A5568] dark:text-[#B9C2CE]">Loading your dashboard...</p>
         </div>
       </div>
     );
@@ -293,95 +293,94 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
 
   const renderOverviewTab = () => (
     <div className="space-y-8">
- {/* Welcome Section */}
-<div className="bg-gradient-to-r from-talento-600 to-talento-700 rounded-2xl p-8 text-white">
-  <div className="flex items-center justify-between">
-    <div>
-      <h1 className="text-3xl font-bold mb-2">
-        Welcome back, {profile?.full_name?.split(' ')[0] || 'User'}!
-      </h1>
-      <p className="text-talento-100 text-lg">Ready to take the next step in your career?</p>
-    </div>
-    <div className="hidden md:block">
-      <div className="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-        {profile?.profile_photo_url ? (
-          <img
-            src={profile.profile_photo_url}
-            alt="Profile"
-            className="w-full h-full object-cover rounded-full"
-          />
-        ) : (
-          <User className="w-12 h-12 text-white" />
-        )}
+      {/* Welcome Section */}
+      <div className="bg-[#0A1A30] border border-[#C2A26B]/30 rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="flex items-center justify-between relative z-10">
+          <div>
+            <h1 className="text-3xl font-bold font-heading mb-2 text-[#C2A26B]">
+              Welcome back, {profile?.full_name?.split(' ')[0] || 'User'}!
+            </h1>
+            <p className="text-[#B9C2CE] text-lg">Ready to take the next step in your career?</p>
+          </div>
+          <div className="hidden md:block">
+            <div className="w-24 h-24 rounded-full bg-white/10 border-2 border-[#C2A26B]/50 flex items-center justify-center overflow-hidden">
+              {profile?.profile_photo_url ? (
+                <img
+                  src={profile.profile_photo_url}
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <User className="w-12 h-12 text-[#C2A26B]" />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-xl p-6 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Profile Views</p>
-              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.profileViews}</p>
+              <p className="text-sm font-medium text-[#4A5568] dark:text-[#B9C2CE]">Profile Views</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-[#0A1A30] dark:text-white">{stats.profileViews}</p>
             </div>
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-              <Eye className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="w-12 h-12 bg-[#C2A26B]/15 rounded-lg flex items-center justify-center">
+              <Eye className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A26B]" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
-            <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-            <span className="text-green-600 dark:text-green-400 font-mono text-xs">+12% from last month</span>
+            <TrendingUp className="w-4 h-4 text-[#2F6B4F] mr-1" />
+            <span className="text-[#2F6B4F] font-mono text-xs">+12% from last month</span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-xl p-6 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Applications</p>
-              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.applications}</p>
+              <p className="text-sm font-medium text-[#4A5568] dark:text-[#B9C2CE]">Applications</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-[#0A1A30] dark:text-white">{stats.applications}</p>
             </div>
-            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-              <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="w-12 h-12 bg-[#C2A26B]/15 rounded-lg flex items-center justify-center">
+              <FileText className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A26B]" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
-            <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-            <span className="text-green-600 dark:text-green-400 font-mono text-xs">+3 this week</span>
+            <TrendingUp className="w-4 h-4 text-[#2F6B4F] mr-1" />
+            <span className="text-[#2F6B4F] font-mono text-xs">+3 this week</span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-xl p-6 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Interviews</p>
-              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.interviews}</p>
+              <p className="text-sm font-medium text-[#4A5568] dark:text-[#B9C2CE]">Interviews</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-[#0A1A30] dark:text-white">{stats.interviews}</p>
             </div>
-            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-green-600 dark:text-green-400" />
+            <div className="w-12 h-12 bg-[#2F6B4F]/15 rounded-lg flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-[#2F6B4F]" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
-            <Calendar className="w-4 h-4 text-blue-500 mr-1" />
-            <span className="text-blue-600 dark:text-blue-400 font-mono text-xs">1 scheduled</span>
+            <Calendar className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B] mr-1" />
+            <span className="text-[#7A5F2E] dark:text-[#C2A26B] font-mono text-xs">1 scheduled</span>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-xl p-6 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Offers</p>
-              <p className="text-2xl font-bold font-mono tracking-tight text-gray-900 dark:text-white">{stats.offers}</p>
+              <p className="text-sm font-medium text-[#4A5568] dark:text-[#B9C2CE]">Offers</p>
+              <p className="text-2xl font-bold font-mono tracking-tight text-[#0A1A30] dark:text-white">{stats.offers}</p>
             </div>
-            <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center">
-              <Award className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+            <div className="w-12 h-12 bg-[#C2A26B]/15 rounded-lg flex items-center justify-center">
+              <Award className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A26B]" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
-            <Star className="w-4 h-4 text-yellow-500 mr-1" />
-            <span className="text-yellow-600 dark:text-yellow-400">Pending review</span>
+            <Star className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B] mr-1" />
+            <span className="text-[#7A5F2E] dark:text-[#C2A26B] text-xs">Pending review</span>
           </div>
         </div>
       </div>
@@ -389,16 +388,16 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       {/* Profile Completion & Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Profile Completion */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Profile Completion</h3>
-            <span className="text-2xl font-bold font-mono tracking-tight text-talento-600 dark:text-talento-400">{completionPercentage}%</span>
+            <h3 className="text-xl font-semibold font-heading text-[#0A1A30] dark:text-white">Profile Completion</h3>
+            <span className="text-2xl font-bold font-mono tracking-tight text-[#7A5F2E] dark:text-[#C2A26B]">{completionPercentage}%</span>
           </div>
           
           <div className="mb-6">
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+            <div className="w-full bg-[#F7F4EC] dark:bg-[#0A1A30] border border-[#B9C2CE]/20 rounded-full h-3">
               <div 
-                className="bg-gradient-to-r from-talento-500 to-talento-600 h-3 rounded-full transition-all duration-500"
+                className="bg-[#C2A26B] h-3 rounded-full transition-all duration-500"
                 style={{ width: `${completionPercentage}%` }}
               ></div>
             </div>
@@ -409,18 +408,18 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               <div key={item.id} className="flex items-center justify-between">
                 <div className="flex items-center">
                   {item.completed ? (
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <CheckCircle className="w-5 h-5 text-[#2F6B4F] mr-3" />
                   ) : (
-                    <div className="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 rounded-full mr-3"></div>
+                    <div className="w-5 h-5 border-2 border-[#B9C2CE] rounded-full mr-3"></div>
                   )}
-                  <span className={`text-sm ${item.completed ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                  <span className={`text-sm ${item.completed ? 'text-[#0A1A30] dark:text-white' : 'text-[#4A5568]/70 dark:text-[#9AA5B4]'}`}>
                     {item.label}
                   </span>
                 </div>
                 {!item.completed && (
                   <button 
                     onClick={() => setActiveTab('profile')}
-                    className="text-xs text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 font-medium"
+                    className="text-xs text-[#7A5F2E] dark:text-[#C2A26B] hover:underline font-semibold"
                   >
                     Complete
                   </button>
@@ -430,19 +429,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           {completionPercentage < 100 && (
-            <div className="mt-6 p-4 bg-talento-50 dark:bg-talento-900/30 rounded-lg border border-transparent dark:border-talento-500/20">
-              <p className="text-sm text-talento-700 dark:text-talento-300">
-                <strong>Tip:</strong> Complete your profile to increase visibility by up to 40%!
+            <div className="mt-6 p-4 bg-[#F7F4EC] dark:bg-[#0A1A30] rounded-lg border border-[#B9C2CE]/20">
+              <p className="text-sm text-[#4A5568] dark:text-[#B9C2CE]">
+                <strong className="text-[#0A1A30] dark:text-white">Tip:</strong> Complete your profile to increase visibility by up to 40%!
               </p>
             </div>
           )}
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Activity</h3>
-            <button className="text-sm text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 font-medium">
+            <h3 className="text-xl font-semibold font-heading text-[#0A1A30] dark:text-white">Recent Activity</h3>
+            <button className="text-sm text-[#7A5F2E] dark:text-[#C2A26B] hover:text-[#0A1A30] dark:hover:text-white font-semibold">
               View All
             </button>
           </div>
@@ -450,15 +449,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           <div className="space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-talento-100 dark:bg-talento-900/40 rounded-full flex items-center justify-center flex-shrink-0">
-                  {activity.type === 'profile_view' && <Eye className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
-                  {activity.type === 'application' && <FileText className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
-                  {activity.type === 'interview' && <Calendar className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
-                  {activity.type === 'message' && <MessageSquare className="w-4 h-4 text-talento-600 dark:text-talento-400" />}
+                <div className="w-8 h-8 bg-[#C2A26B]/15 rounded-full flex items-center justify-center flex-shrink-0">
+                  {activity.type === 'profile_view' && <Eye className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B]" />}
+                  {activity.type === 'application' && <FileText className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B]" />}
+                  {activity.type === 'interview' && <Calendar className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B]" />}
+                  {activity.type === 'message' && <MessageSquare className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B]" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-gray-900 dark:text-white">{activity.message}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{activity.time}</p>
+                  <p className="text-sm text-[#0A1A30] dark:text-white">{activity.message}</p>
+                  <p className="text-xs text-[#4A5568]/80 dark:text-[#9AA5B4] mt-1">{activity.time}</p>
                 </div>
               </div>
             ))}
@@ -471,19 +470,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   const renderProfileTab = () => (
     <div className="space-y-8">
       {/* Profile Header */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+      <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Profile Information</h2>
+          <h2 className="text-2xl font-semibold font-heading text-[#0A1A30] dark:text-white">Profile Information</h2>
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Completion:</span>
-            <span className="text-sm font-semibold text-talento-600 dark:text-talento-400">{completionPercentage}%</span>
+            <span className="text-sm text-[#4A5568] dark:text-[#B9C2CE]">Completion:</span>
+            <span className="text-sm font-semibold font-mono text-[#7A5F2E] dark:text-[#C2A26B]">{completionPercentage}%</span>
           </div>
         </div>
         
         {/* Profile Photo Section */}
         <div className="text-center mb-8">
           <div className="relative inline-block">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-talento-100 to-talento-200 flex items-center justify-center overflow-hidden ring-4 ring-white shadow-lg">
+            <div className="w-32 h-32 rounded-full bg-[#F7F4EC] dark:bg-[#0A1A30] border-2 border-[#C2A26B]/50 flex items-center justify-center overflow-hidden ring-4 ring-white dark:ring-[#1C2B44] shadow-md">
               {profile?.profile_photo_url ? (
                 <img
                   src={profile.profile_photo_url}
@@ -491,12 +490,12 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <User className="w-16 h-16 text-talento-400" />
+                <User className="w-16 h-16 text-[#7A5F2E] dark:text-[#C2A26B]" />
               )}
             </div>
             <label
               htmlFor="photo-upload"
-              className="absolute bottom-2 right-2 bg-talento-600 text-white p-3 rounded-full cursor-pointer hover:bg-talento-700 transition-colors shadow-lg hover:shadow-xl"
+              className="absolute bottom-2 right-2 bg-[#C2A26B] text-[#0A1A30] p-3 rounded-full cursor-pointer hover:bg-[#A8874F] transition-colors shadow-md hover:shadow-lg"
             >
               {isUploadingPhoto ? (
                 <Loader className="w-5 h-5 animate-spin" />
@@ -513,18 +512,18 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               disabled={isUploadingPhoto}
             />
           </div>
-          <p className="text-sm text-gray-500 mt-3">Click the camera icon to update your photo</p>
+          <p className="text-sm text-[#4A5568]/80 dark:text-[#9AA5B4] mt-3">Click the camera icon to update your photo</p>
         </div>
 
         {/* Basic Information Form */}
         <form onSubmit={handleProfileUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="fullName" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Full Name *
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <User className="h-5 w-5 text-gray-400" />
+                <User className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="fullName"
@@ -532,19 +531,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 defaultValue={profile?.full_name || ''}
                 required
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Your full name"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Email Address
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400" />
+                <Mail className="h-5 w-5 text-[#B9C2CE]" />
               </div>
               <input
                 id="email"
@@ -552,18 +551,18 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="email"
                 value={user.email || ''}
                 disabled
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 rounded-xl bg-[#F7F4EC]/60 dark:bg-[#0A1A30]/60 text-[#4A5568]/60 dark:text-[#B9C2CE]/50 cursor-not-allowed"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="phone" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Phone Number
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Phone className="h-5 w-5 text-gray-400" />
+                <Phone className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="phone"
@@ -571,19 +570,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="tel"
                 value={profileData.phone}
                 onChange={(e) => setProfileData(prev => ({ ...prev, phone: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="location" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Location
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MapPin className="h-5 w-5 text-gray-400" />
+                <MapPin className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="location"
@@ -591,14 +590,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.location}
                 onChange={(e) => setProfileData(prev => ({ ...prev, location: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="City, Country"
               />
             </div>
           </div>
 
           <div className="md:col-span-2">
-            <label htmlFor="bio" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="bio" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Professional Summary
             </label>
             <textarea
@@ -607,25 +606,25 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               rows={4}
               value={profileData.bio}
               onChange={(e) => setProfileData(prev => ({ ...prev, bio: e.target.value }))}
-              className="block w-full px-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900 resize-none"
+              className="block w-full px-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30] resize-none"
               placeholder="Write a brief summary about your professional background and career goals..."
             />
           </div>
 
           {profileError && (
-            <div className="md:col-span-2 bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="md:col-span-2 bg-[#A23B3B]/10 border border-[#A23B3B]/30 rounded-xl p-4">
               <div className="flex items-center">
-                <AlertCircle className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-red-700 text-sm">{profileError}</p>
+                <AlertCircle className="w-5 h-5 text-[#A23B3B] mr-2 flex-shrink-0" />
+                <p className="text-[#A23B3B] text-sm font-medium">{profileError}</p>
               </div>
             </div>
           )}
 
           {profileSuccess && (
-            <div className="md:col-span-2 bg-green-50 border border-green-200 rounded-xl p-4">
+            <div className="md:col-span-2 bg-[#2F6B4F]/10 border border-[#2F6B4F]/30 rounded-xl p-4">
               <div className="flex items-center">
-                <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-green-700 text-sm">{profileSuccess}</p>
+                <CheckCircle className="w-5 h-5 text-[#2F6B4F] mr-2 flex-shrink-0" />
+                <p className="text-[#2F6B4F] text-sm font-medium">{profileSuccess}</p>
               </div>
             </div>
           )}
@@ -634,7 +633,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
             <button
               type="submit"
               disabled={isUpdatingProfile}
-              className="bg-gradient-to-r from-talento-600 to-talento-700 text-white px-6 py-3 rounded-xl font-medium hover:from-talento-700 hover:to-talento-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg hover:shadow-xl"
+              className="bg-[#C2A26B] text-[#0A1A30] px-6 py-3 rounded-xl font-semibold tracking-wide hover:bg-[#A8874F] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-sm hover:shadow"
             >
               {isUpdatingProfile ? (
                 <>
@@ -653,17 +652,17 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       </div>
 
       {/* Professional Information */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Professional Information</h3>
+      <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
+        <h3 className="text-xl font-semibold font-heading text-[#0A1A30] dark:text-white mb-6">Professional Information</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="company" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Current Company
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Briefcase className="h-5 w-5 text-gray-400" />
+                <Briefcase className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="company"
@@ -671,19 +670,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.company}
                 onChange={(e) => setProfileData(prev => ({ ...prev, company: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Company name"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="position" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="position" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Current Position
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Target className="h-5 w-5 text-gray-400" />
+                <Target className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="position"
@@ -691,14 +690,14 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.position}
                 onChange={(e) => setProfileData(prev => ({ ...prev, position: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Job title"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="experience" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="experience" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Years of Experience
             </label>
             <select
@@ -706,7 +705,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               name="experience"
               value={profileData.experience}
               onChange={(e) => setProfileData(prev => ({ ...prev, experience: e.target.value }))}
-              className="block w-full px-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+              className="block w-full px-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
             >
               <option value="">Select experience level</option>
               <option value="0-1">0-1 years</option>
@@ -718,12 +717,12 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           </div>
 
           <div>
-            <label htmlFor="education" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="education" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Education
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <GraduationCap className="h-5 w-5 text-gray-400" />
+                <GraduationCap className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="education"
@@ -731,19 +730,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="text"
                 value={profileData.education}
                 onChange={(e) => setProfileData(prev => ({ ...prev, education: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Degree, University"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="linkedin" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               LinkedIn Profile
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <ExternalLink className="h-5 w-5 text-gray-400" />
+                <ExternalLink className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="linkedin"
@@ -751,19 +750,19 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="url"
                 value={profileData.linkedin}
                 onChange={(e) => setProfileData(prev => ({ ...prev, linkedin: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="https://linkedin.com/in/yourprofile"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="website" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="website" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Personal Website
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <ExternalLink className="h-5 w-5 text-gray-400" />
+                <ExternalLink className="h-5 w-5 text-[#7A5F2E] dark:text-[#C2A26B]" />
               </div>
               <input
                 id="website"
@@ -771,7 +770,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 type="url"
                 value={profileData.website}
                 onChange={(e) => setProfileData(prev => ({ ...prev, website: e.target.value }))}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="https://yourwebsite.com"
               />
             </div>
@@ -784,27 +783,27 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   const renderSecurityTab = () => (
     <div className="space-y-8">
       {/* Change Password */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
+      <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
         <div className="flex items-center mb-6">
-          <Shield className="w-6 h-6 text-talento-600 dark:text-talento-400 mr-3" />
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Security Settings</h2>
+          <Shield className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A26B] mr-3" />
+          <h2 className="text-2xl font-semibold font-heading text-[#0A1A30] dark:text-white">Security Settings</h2>
         </div>
         
         <form onSubmit={handlePasswordUpdate} className="space-y-6 max-w-md">
           <div>
-            <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="newPassword" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               New Password
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400" />
+                <Lock className="h-5 w-5 text-[#B9C2CE]" />
               </div>
               <input
                 id="newPassword"
                 name="newPassword"
                 type={showNewPassword ? 'text' : 'password'}
                 required
-                className="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-10 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Enter new password"
               />
               <button
@@ -813,28 +812,28 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 onClick={() => setShowNewPassword(!showNewPassword)}
               >
                 {showNewPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                  <EyeOff className="h-5 w-5 text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white transition-colors" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                  <Eye className="h-5 w-5 text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white transition-colors" />
                 )}
               </button>
             </div>
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
               Confirm New Password
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400" />
+                <Lock className="h-5 w-5 text-[#B9C2CE]" />
               </div>
               <input
                 id="confirmPassword"
                 name="confirmPassword"
                 type={showConfirmPassword ? 'text' : 'password'}
                 required
-                className="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                className="block w-full pl-10 pr-10 py-3 border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white focus:bg-white dark:focus:bg-[#0A1A30]"
                 placeholder="Confirm new password"
               />
               <button
@@ -843,28 +842,28 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                  <EyeOff className="h-5 w-5 text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white transition-colors" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors" />
+                  <Eye className="h-5 w-5 text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white transition-colors" />
                 )}
               </button>
             </div>
           </div>
 
           {passwordError && (
-            <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-850 rounded-xl p-4">
+            <div className="bg-[#A23B3B]/10 border border-[#A23B3B]/30 rounded-xl p-4">
               <div className="flex items-center">
-                <AlertCircle className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-red-700 dark:text-red-400 text-sm">{passwordError}</p>
+                <AlertCircle className="w-5 h-5 text-[#A23B3B] mr-2 flex-shrink-0" />
+                <p className="text-[#A23B3B] text-sm font-medium">{passwordError}</p>
               </div>
             </div>
           )}
 
           {passwordSuccess && (
-            <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/40 rounded-xl p-4">
+            <div className="bg-[#2F6B4F]/10 border border-[#2F6B4F]/30 rounded-xl p-4">
               <div className="flex items-center">
-                <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                <p className="text-green-700 dark:text-green-400 text-sm">{passwordSuccess}</p>
+                <CheckCircle className="w-5 h-5 text-[#2F6B4F] mr-2 flex-shrink-0" />
+                <p className="text-[#2F6B4F] text-sm font-medium">{passwordSuccess}</p>
               </div>
             </div>
           )}
@@ -872,7 +871,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
           <button
             type="submit"
             disabled={isUpdatingPassword}
-            className="bg-gradient-to-r from-talento-600 to-talento-700 text-white px-6 py-3 rounded-xl font-medium hover:from-talento-700 hover:to-talento-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-lg hover:shadow-xl"
+            className="bg-[#C2A26B] text-[#0A1A30] px-6 py-3 rounded-xl font-semibold tracking-wide hover:bg-[#A8874F] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center shadow-sm hover:shadow"
           >
             {isUpdatingPassword ? (
               <>
@@ -890,26 +889,26 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       </div>
 
       {/* Account Security Info */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700/60">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Account Security</h3>
+      <div className="bg-white dark:bg-[#1C2B44] rounded-2xl p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
+        <h3 className="text-xl font-semibold font-heading text-[#0A1A30] dark:text-white mb-6">Account Security</h3>
         
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800/40">
+          <div className="flex items-center justify-between p-4 bg-[#2F6B4F]/10 dark:bg-[#2F6B4F]/20 rounded-lg border border-[#2F6B4F]/30">
             <div className="flex items-center">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+              <CheckCircle className="w-5 h-5 text-[#2F6B4F] mr-3" />
               <div>
-                <p className="text-sm font-medium text-green-800 dark:text-green-300">Email Verified</p>
-                <p className="text-xs text-green-600 dark:text-green-400">Your email address has been verified</p>
+                <p className="text-sm font-semibold text-[#2F6B4F]">Email Verified</p>
+                <p className="text-xs text-[#2F6B4F]/80">Your email address has been verified</p>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800/40">
+          <div className="flex items-center justify-between p-4 bg-[#F7F4EC] dark:bg-[#0A1A30] rounded-lg border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15">
             <div className="flex items-center">
-              <Shield className="w-5 h-5 text-blue-500 mr-3" />
+              <Shield className="w-5 h-5 text-[#7A5F2E] dark:text-[#C2A26B] mr-3" />
               <div>
-                <p className="text-sm font-medium text-blue-800 dark:text-blue-300">Secure Password</p>
-                <p className="text-xs text-blue-600 dark:text-blue-400">Your password meets security requirements</p>
+                <p className="text-sm font-semibold text-[#0A1A30] dark:text-white">Secure Password</p>
+                <p className="text-xs text-[#4A5568] dark:text-[#B9C2CE]">Your password meets security requirements</p>
               </div>
             </div>
           </div>
@@ -919,15 +918,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#4A5568] dark:text-[#B9C2CE] transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white/95 dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 backdrop-blur-sm sticky top-0 z-40 transition-colors">
+      <div className="bg-[#F7F4EC]/95 dark:bg-[#0A1A30]/95 shadow-sm border-b border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 backdrop-blur-sm sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <button
                 onClick={onBack}
-                className="inline-flex items-center text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors mr-6 font-medium"
+                className="inline-flex items-center text-[#7A5F2E] dark:text-[#C2A26B] hover:text-[#0A1A30] dark:hover:text-[#F7F4EC] transition-colors mr-6 font-semibold"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
@@ -943,29 +942,29 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               <div className="relative" ref={notificationRef}>
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="relative p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                  className="relative p-2 text-[#4A5568] hover:text-[#0A1A30] dark:text-[#B9C2CE] dark:hover:text-white transition-colors"
                 >
                   <Bell className="w-6 h-6" />
                   {notifications.some(n => n.unread) && (
-                    <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    <span className="absolute top-1 right-1 w-2 h-2 bg-[#A23B3B] rounded-full"></span>
                   )}
                 </button>
 
                 {showNotifications && (
-                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50 max-h-96 overflow-y-auto">
-                    <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-700">
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">Notifications</h3>
+                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-[#1C2B44] rounded-xl shadow-xl border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15 py-2 z-50 max-h-96 overflow-y-auto">
+                    <div className="px-4 py-2 border-b border-[#B9C2CE]/20 dark:border-[#B9C2CE]/15">
+                      <h3 className="text-sm font-semibold font-heading text-[#0A1A30] dark:text-white">Notifications</h3>
                     </div>
                     {notifications.map((notification) => (
-                      <div key={notification.id} className={`px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors ${notification.unread ? 'bg-blue-50 dark:bg-blue-950/40' : ''}`}>
+                      <div key={notification.id} className={`px-4 py-3 hover:bg-[#F7F4EC] dark:hover:bg-[#0A1A30]/60 transition-colors ${notification.unread ? 'bg-[#F7F4EC]/70 dark:bg-[#0A1A30]/80' : ''}`}>
                         <div className="flex items-start">
                           <div className={`w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0 ${
-                            notification.type === 'success' ? 'bg-green-500' :
-                            notification.type === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'
+                            notification.type === 'success' ? 'bg-[#2F6B4F]' :
+                            notification.type === 'warning' ? 'bg-[#C2A26B]' : 'bg-[#7A5F2E]'
                           }`}></div>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-900 dark:text-white">{notification.title}</p>
-                            <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">{notification.message}</p>
+                            <p className="text-sm font-medium text-[#0A1A30] dark:text-white">{notification.title}</p>
+                            <p className="text-xs text-[#4A5568] dark:text-[#B9C2CE] mt-1">{notification.message}</p>
                           </div>
                         </div>
                       </div>
@@ -978,9 +977,9 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-[#F7F4EC] dark:hover:bg-[#1C2B44] transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden ring-2 ring-talento-100 dark:ring-talento-500/30">
+                  <div className="w-10 h-10 rounded-full bg-[#F7F4EC] dark:bg-[#0A1A30] flex items-center justify-center overflow-hidden ring-2 ring-[#C2A26B]/50">
                     {profile?.profile_photo_url ? (
                       <img
                         src={profile.profile_photo_url}
@@ -988,28 +987,28 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <User className="w-6 h-6 text-gray-400" />
+                      <User className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A26B]" />
                     )}
                   </div>
                   <div className="hidden sm:block text-left">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    <p className="text-sm font-medium text-[#0A1A30] dark:text-white">
                       {profile?.full_name || 'User'}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
+                    <p className="text-xs text-[#4A5568]/80 dark:text-[#9AA5B4]">{user.email}</p>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#B9C2CE] transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
                 {showDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1C2B44] rounded-xl shadow-xl border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15 py-2 z-50">
                     <button
                       onClick={() => {
                         setActiveTab('profile');
                         setShowDropdown(false);
                       }}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-[#0A1A30] dark:text-[#B9C2CE] hover:bg-[#F7F4EC] dark:hover:bg-[#0A1A30] transition-colors"
                     >
-                      <Settings className="w-4 h-4 mr-3" />
+                      <Settings className="w-4 h-4 mr-3 text-[#7A5F2E] dark:text-[#C2A26B]" />
                       Edit Profile
                     </button>
                     <button
@@ -1017,15 +1016,15 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                         setActiveTab('security');
                         setShowDropdown(false);
                       }}
-                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-[#0A1A30] dark:text-[#B9C2CE] hover:bg-[#F7F4EC] dark:hover:bg-[#0A1A30] transition-colors"
                     >
-                      <Shield className="w-4 h-4 mr-3" />
+                      <Shield className="w-4 h-4 mr-3 text-[#7A5F2E] dark:text-[#C2A26B]" />
                       Security
                     </button>
-                    <hr className="my-1 border-gray-100 dark:border-gray-700" />
+                    <hr className="my-1 border-[#B9C2CE]/20 dark:border-[#B9C2CE]/15" />
                     <button
                       onClick={handleSignOut}
-                      className="flex items-center w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
+                      className="flex items-center w-full px-4 py-2 text-sm text-[#A23B3B] hover:bg-[#A23B3B]/10 transition-colors"
                     >
                       <LogOut className="w-4 h-4 mr-3" />
                       Sign Out
@@ -1047,8 +1046,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('overview')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'overview'
-                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
-                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? 'border-[#C2A26B] text-[#7A5F2E] dark:text-[#C2A26B] font-semibold'
+                  : 'border-transparent text-[#4A5568] dark:text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white'
               }`}
             >
               <div className="flex items-center">
@@ -1060,8 +1059,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('profile')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'profile'
-                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
-                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? 'border-[#C2A26B] text-[#7A5F2E] dark:text-[#C2A26B] font-semibold'
+                  : 'border-transparent text-[#4A5568] dark:text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white'
               }`}
             >
               <div className="flex items-center">
@@ -1073,8 +1072,8 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
               onClick={() => setActiveTab('security')}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 activeTab === 'security'
-                  ? 'border-talento-500 text-talento-600 dark:text-talento-400'
-                  : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                  ? 'border-[#C2A26B] text-[#7A5F2E] dark:text-[#C2A26B] font-semibold'
+                  : 'border-transparent text-[#4A5568] dark:text-[#B9C2CE] hover:text-[#0A1A30] dark:hover:text-white'
               }`}
             >
               <div className="flex items-center">

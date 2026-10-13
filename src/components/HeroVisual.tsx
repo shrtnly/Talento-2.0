@@ -63,7 +63,7 @@ const HeroVisual = () => {
       role="img"
     >
       {/* Soft brand glow behind the man – slow ambient breathing */}
-      <div className="absolute left-[30%] top-[18%] w-[56%] aspect-square rounded-full bg-gradient-to-tr from-talento-300/40 via-talento-200/25 to-transparent dark:from-talento-600/25 dark:via-talento-800/15 blur-3xl animate-light-slow pointer-events-none" />
+      <div className="absolute left-[30%] top-[18%] w-[56%] aspect-square rounded-full bg-gradient-to-tr from-[#C2A26B]/20 via-[#1C2B44]/20 to-transparent dark:from-[#C2A26B]/15 dark:via-[#1C2B44]/30 blur-3xl animate-light-slow pointer-events-none" />
 
       {/* ---------- Orbit 1 (outer) ---------- */}
       <div
@@ -143,7 +143,7 @@ const HeroVisual = () => {
 
       {/* ---------- Bottom baseline border (brought to front, sits on top of man base) ---------- */}
       <div
-        className="absolute left-[3%] right-[2%] top-[96.75%] h-[3px] sm:h-[3.5px] md:h-[4px] z-30 bg-[#252430] dark:bg-gray-400 rounded-full hero-enter-fade"
+        className="absolute left-[3%] right-[2%] top-[96.75%] h-[3px] sm:h-[3.5px] md:h-[4px] z-30 bg-[#B9C2CE]/50 dark:bg-[#C2A26B]/50 rounded-full hero-enter-fade"
         style={{ animationDelay: '0.6s' }}
       />
 

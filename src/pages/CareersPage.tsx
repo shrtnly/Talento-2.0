@@ -21,6 +21,7 @@ import {
   Target,
   BookOpen,
   Headphones,
+  Share2,
 } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
 
@@ -238,52 +239,56 @@ Best regards,
     return (
       <div 
         key={job.id} 
-        className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 dark:border-gray-700/60 hover:shadow-lg transition-all duration-300 hover:border-talento-300 dark:hover:border-talento-500/40 cursor-pointer"
+        className="bg-white dark:bg-[#1C2B44] rounded-2xl p-6 sm:p-8 shadow-sm border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15 hover:shadow-lg transition-all duration-300 hover:border-[#C2A26B]/50 dark:hover:border-[#C2A26B]/50 cursor-pointer"
         onClick={() => handleViewJobDetails(job)}
       >
         <div className="flex flex-col sm:flex-row justify-between items-start mb-6">
           <div className="mb-4 sm:mb-0">
             <div className="flex items-center mb-2">
-              <h3 className="text-xl font-semibold font-heading text-gray-900 dark:text-white mr-3">{job.title}</h3>
-              <span className={`text-xs px-2 py-1 rounded-full ${active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+              <h3 className="text-xl font-semibold font-heading text-[#0A1A30] dark:text-white mr-3">{job.title}</h3>
+              <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                active 
+                  ? 'bg-[#2F6B4F]/10 text-[#2F6B4F] dark:bg-[#2F6B4F]/20 dark:text-[#2F6B4F]' 
+                  : 'bg-[#A23B3B]/10 text-[#A23B3B] dark:bg-[#A23B3B]/20 dark:text-[#A23B3B]'
+              }`}>
                 {active ? 'Active' : 'Expired'}
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#4A5568] dark:text-[#B9C2CE]">
               <div className="flex items-center">
-                <Building className="w-4 h-4 mr-1" />
+                <Building className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                 {job.department}
               </div>
               <div className="flex items-center">
-                <MapPin className="w-4 h-4 mr-1" />
+                <MapPin className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                 {job.location}
               </div>
               <div className="flex items-center">
-                <Clock className="w-4 h-4 mr-1" />
+                <Clock className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                 {job.type}
               </div>
             </div>
           </div>
           <div className="text-left sm:text-right">
             {job.salaryRange && (
-              <div className="flex items-center text-talento-600 dark:text-talento-400 font-semibold font-mono tracking-tight mb-1">
+              <div className="flex items-center text-[#7A5F2E] dark:text-[#C2A26B] font-semibold font-mono tracking-tight mb-1">
                 {job.salaryRange}
               </div>
             )}
             <div className="flex flex-wrap gap-2">
               {job.remote ? (
-                <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Remote OK</span>
+                <span className="bg-[#2F6B4F]/10 text-[#2F6B4F] text-xs px-2.5 py-0.5 rounded-full font-medium">Remote OK</span>
               ) : (
-                <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Onsite</span>
+                <span className="bg-[#B9C2CE]/20 text-[#0A1A30] dark:text-[#B9C2CE] text-xs px-2.5 py-0.5 rounded-full font-medium">Onsite</span>
               )}
-              <span className="bg-talento-100 text-talento-800 text-xs px-2 py-1 rounded-full">{job.type}</span>
+              <span className="bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#0A1A30] dark:text-[#B9C2CE] border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15 text-xs px-2.5 py-0.5 rounded-full font-medium">{job.type}</span>
             </div>
           </div>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{job.description}</p>
+        <p className="text-[#4A5568] dark:text-[#B9C2CE] mb-6 leading-relaxed">{job.description}</p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <Calendar className="w-4 h-4 mr-1" />
+          <div className="flex items-center text-sm text-[#4A5568]/80 dark:text-[#9AA5B4]">
+            <Calendar className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
             Apply by {new Date(job.deadline).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
           <div className="flex flex-wrap gap-3 w-full sm:w-auto" onClick={(e) => e.stopPropagation()}>
@@ -292,7 +297,7 @@ Best regards,
                 e.stopPropagation();
                 handleShareJob(job);
               }}
-              className="text-gray-600 hover:text-gray-800 font-medium text-sm transition-colors flex items-center flex-1 sm:flex-none"
+              className="text-[#4A5568] hover:text-[#0A1A30] dark:text-[#B9C2CE] dark:hover:text-white font-medium text-sm transition-colors flex items-center flex-1 sm:flex-none"
             >
               <Share2 className="w-4 h-4 mr-1" />
               Share
@@ -303,10 +308,10 @@ Best regards,
                 handleApply(job.id);
               }}
               disabled={!active}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center flex-1 sm:flex-none ${
+              className={`px-6 py-2 rounded-lg font-semibold tracking-wide transition-all duration-200 shadow-sm hover:shadow flex items-center justify-center flex-1 sm:flex-none ${
                 active 
-                  ? 'bg-gradient-to-r from-talento-600 to-talento-700 text-white hover:from-talento-700 hover:to-talento-800' 
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-[#C2A26B] text-[#0A1A30] hover:bg-[#A8874F]' 
+                  : 'bg-[#B9C2CE]/30 text-[#4A5568]/60 cursor-not-allowed'
               }`}
             >
               <Mail className="w-4 h-4 mr-2" />
@@ -322,34 +327,38 @@ Best regards,
     const active = isJobActive(job.deadline);
     
     return (
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-100 dark:border-gray-700/80 shadow-2xl">
-          <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 p-6 rounded-t-2xl z-10">
+      <div className="fixed inset-0 bg-[#0A1A30]/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/15 shadow-2xl">
+          <div className="sticky top-0 bg-white dark:bg-[#1C2B44] border-b border-[#B9C2CE]/20 dark:border-[#B9C2CE]/15 p-6 rounded-t-2xl z-10">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <div className="flex items-center mb-2">
-                  <h2 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mr-3">{job.title}</h2>
-                  <span className={`text-xs px-2 py-1 rounded-full ${active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  <h2 className="text-2xl font-bold font-heading text-[#0A1A30] dark:text-white mr-3">{job.title}</h2>
+                  <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                    active 
+                      ? 'bg-[#2F6B4F]/10 text-[#2F6B4F] dark:bg-[#2F6B4F]/20 dark:text-[#2F6B4F]' 
+                      : 'bg-[#A23B3B]/10 text-[#A23B3B] dark:bg-[#A23B3B]/20 dark:text-[#A23B3B]'
+                  }`}>
                     {active ? 'Active' : 'Expired'}
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-[#4A5568] dark:text-[#B9C2CE]">
                   <div className="flex items-center">
-                    <Building className="w-4 h-4 mr-1" />
+                    <Building className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                     {job.department}
                   </div>
                   <div className="flex items-center">
-                    <MapPin className="w-4 h-4 mr-1" />
+                    <MapPin className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                     {job.location}
                   </div>
                   <div className="flex items-center">
-                    <Clock className="w-4 h-4 mr-1" />
+                    <Clock className="w-4 h-4 mr-1 text-[#7A5F2E] dark:text-[#C2A26B]" />
                     {job.type}
                   </div>
                   {job.remote ? (
-                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Remote OK</span>
+                    <span className="bg-[#2F6B4F]/10 text-[#2F6B4F] text-xs px-2.5 py-0.5 rounded-full font-medium">Remote OK</span>
                   ) : (
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Onsite</span>
+                    <span className="bg-[#B9C2CE]/20 text-[#0A1A30] dark:text-[#B9C2CE] text-xs px-2.5 py-0.5 rounded-full font-medium">Onsite</span>
                   )}
                 </div>
               </div>
@@ -359,13 +368,13 @@ Best regards,
                     e.stopPropagation();
                     handleShareJob(job);
                   }}
-                  className="text-gray-600 hover:text-gray-800 transition-colors"
+                  className="text-[#4A5568] hover:text-[#0A1A30] dark:text-[#B9C2CE] dark:hover:text-white transition-colors p-1"
                 >
                   <Share2 className="w-5 h-5" />
                 </button>
                 <button
                   onClick={closeJobDetails}
-                  className="text-gray-400 hover:text-gray-600 text-2xl font-light"
+                  className="text-[#4A5568]/70 hover:text-[#0A1A30] dark:text-[#B9C2CE] dark:hover:text-white text-2xl font-light p-1"
                 >
                   ×
                 </button>
@@ -374,64 +383,64 @@ Best regards,
           </div>
           <div className="p-6 space-y-8">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">About This Role</h3>
-              <p className="text-gray-600 leading-relaxed">{job.description}</p>
+              <h3 className="text-lg font-semibold text-[#0A1A30] dark:text-white mb-3">About This Role</h3>
+              <p className="text-[#4A5568] dark:text-[#B9C2CE] leading-relaxed">{job.description}</p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities</h3>
+              <h3 className="text-lg font-semibold text-[#0A1A30] dark:text-white mb-3">Key Responsibilities</h3>
               <ul className="space-y-2">
                 {job.responsibilities.map((responsibility, index) => (
                   <li key={index} className="flex items-start">
-                    <ChevronRight className="w-4 h-4 text-talento-600 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600">{responsibility}</span>
+                    <ChevronRight className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B] mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#4A5568] dark:text-[#B9C2CE]">{responsibility}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Required Qualifications</h3>
+              <h3 className="text-lg font-semibold text-[#0A1A30] dark:text-white mb-3">Required Qualifications</h3>
               <ul className="space-y-2">
                 {job.required.map((requirement, index) => (
                   <li key={index} className="flex items-start">
-                    <ChevronRight className="w-4 h-4 text-talento-600 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600">{requirement}</span>
+                    <ChevronRight className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B] mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#4A5568] dark:text-[#B9C2CE]">{requirement}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Preferred Qualifications</h3>
+              <h3 className="text-lg font-semibold text-[#0A1A30] dark:text-white mb-3">Preferred Qualifications</h3>
               <ul className="space-y-2">
                 {job.preferred.map((preference, index) => (
                   <li key={index} className="flex items-start">
-                    <ChevronRight className="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-600">{preference}</span>
+                    <ChevronRight className="w-4 h-4 text-[#B9C2CE] mr-2 mt-0.5 flex-shrink-0" />
+                    <span className="text-[#4A5568] dark:text-[#B9C2CE]">{preference}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">What We Offer</h3>
+              <h3 className="text-lg font-semibold text-[#0A1A30] dark:text-white mb-3">What We Offer</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {job.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center bg-talento-50 rounded-lg p-3">
-                    <Star className="w-4 h-4 text-talento-600 mr-2" />
-                    <span className="text-gray-700 text-sm">{benefit}</span>
+                  <div key={index} className="flex items-center bg-[#F7F4EC] dark:bg-[#0A1A30] border border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 rounded-lg p-3">
+                    <Star className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A26B] mr-2 flex-shrink-0" />
+                    <span className="text-[#0A1A30] dark:text-[#B9C2CE] text-sm">{benefit}</span>
                   </div>
                 ))}
               </div>
             </div>
             {job.salaryRange && (
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-[#F7F4EC] dark:bg-[#0A1A30] border border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 rounded-lg p-4">
                 <div className="flex items-center">
-                  <DollarSign className="w-5 h-5 text-talento-600 mr-2" />
-                  <span className="font-semibold text-gray-900">Salary Range: </span>
-                  <span className="text-talento-600 font-semibold ml-1">{job.salaryRange}</span>
+                  <DollarSign className="w-5 h-5 text-[#7A5F2E] dark:text-[#C2A26B] mr-2" />
+                  <span className="font-semibold text-[#0A1A30] dark:text-white">Salary Range: </span>
+                  <span className="text-[#7A5F2E] dark:text-[#C2A26B] font-semibold ml-1">{job.salaryRange}</span>
                 </div>
               </div>
             )}
-            <div className="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-gray-100 gap-4">
-              <div className="text-sm text-gray-500">
+            <div className="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-[#B9C2CE]/20 dark:border-[#B9C2CE]/15 gap-4">
+              <div className="text-sm text-[#4A5568]/80 dark:text-[#9AA5B4]">
                 Application deadline: {new Date(job.deadline).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </div>
               <button
@@ -440,10 +449,10 @@ Best regards,
                   handleApply(job.id);
                 }}
                 disabled={!active}
-                className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center w-full sm:w-auto ${
+                className={`px-8 py-3 rounded-lg font-semibold tracking-wide transition-all duration-200 shadow-sm hover:shadow flex items-center justify-center w-full sm:w-auto ${
                   active 
-                    ? 'bg-gradient-to-r from-talento-600 to-talento-700 text-white hover:from-talento-700 hover:to-talento-800' 
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    ? 'bg-[#C2A26B] text-[#0A1A30] hover:bg-[#A8874F]' 
+                    : 'bg-[#B9C2CE]/30 text-[#4A5568]/60 cursor-not-allowed'
                 }`}
               >
                 <Mail className="w-5 h-5 mr-2" />
@@ -457,15 +466,15 @@ Best regards,
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-[#F7F4EC] dark:bg-[#0A1A30] text-[#4A5568] dark:text-[#B9C2CE] transition-colors duration-200">
       {/* Header */}
-      <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 sticky top-0 z-40 transition-colors">
+      <div className="bg-[#F7F4EC]/95 dark:bg-[#0A1A30]/95 backdrop-blur-md shadow-sm border-b border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <button
                 onClick={onBack}
-                className="inline-flex items-center text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors mr-6 font-medium"
+                className="inline-flex items-center text-[#7A5F2E] dark:text-[#C2A26B] hover:text-[#0A1A30] dark:hover:text-[#F7F4EC] transition-colors mr-6 font-semibold"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
@@ -480,26 +489,27 @@ Best regards,
       </div>
       
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-talento-600 to-talento-700 text-white py-16">
+      <div className="bg-[#0A1A30] text-white py-16 border-b border-[#C2A26B]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Join Our Team</h1>
-          <p className="text-xl text-talento-100 mb-8 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-[#C2A26B]">Join Our Team</h1>
+          <p className="text-xl text-[#B9C2CE] mb-8 max-w-3xl mx-auto">
             Build your career with TALENTO and help shape the future of talent acquisition. 
             We're looking for passionate individuals who want to make a difference.
           </p>
-          <button
-            className="bg-white text-talento-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+          <a
+            href="#open-positions"
+            className="inline-block bg-[#C2A26B] text-[#0A1A30] px-8 py-3 rounded-lg font-semibold tracking-wide hover:bg-[#A8874F] shadow-sm hover:shadow transition-all duration-200"
           >
             View Open Positions
-          </button>
+          </a>
         </div>
       </div>
       
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div id="open-positions" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Open Positions</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold font-heading text-[#0A1A30] dark:text-white mb-4">Open Positions</h2>
+          <p className="text-lg text-[#4A5568] dark:text-[#B9C2CE] max-w-2xl mx-auto">
             Discover exciting opportunities to grow your career with us. We're always looking for talented individuals to join our team.
           </p>
         </div>
@@ -513,15 +523,15 @@ Best regards,
       {selectedJob && renderJobDetails(selectedJob)}
       
       {/* Call to Action */}
-      <div className="bg-gradient-to-r from-talento-600 to-talento-700 text-white py-16">
+      <div className="bg-[#0A1A30] text-white py-16 border-t border-[#C2A26B]/30">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-4">Ready to Join Our Team?</h2>
-          <p className="text-xl text-talento-100 mb-8">
+          <h2 className="text-3xl font-bold font-heading mb-4 text-[#C2A26B]">Ready to Join Our Team?</h2>
+          <p className="text-xl text-[#B9C2CE] mb-8">
             Don't see a position that fits? We're always interested in hearing from talented individuals.
           </p>
           <a
             href="https://talento.agency/#apply"
-            className="inline-flex items-center bg-white text-talento-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center bg-[#C2A26B] text-[#0A1A30] px-8 py-3 rounded-lg font-semibold tracking-wide hover:bg-[#A8874F] shadow-sm hover:shadow transition-all duration-200"
           >
             <Mail className="w-5 h-5 mr-2" />
             Send Us Your Resume

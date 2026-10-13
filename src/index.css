@@ -16,11 +16,14 @@
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #F7F4EC; /* Ivory light base */
+    color: #4A5568; /* Graphite body text */
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', 'Inter', sans-serif;
     letter-spacing: -0.025em;
+    color: #0A1A30; /* Midnight Navy headings */
   }
 
   code, kbd, samp, pre {
@@ -29,12 +32,21 @@
   
   html.dark {
     color-scheme: dark;
-    background-color: #131413;
+    background-color: #0A1A30; /* Midnight Navy dark base */
   }
 
   html.dark body {
-    background-color: #131413;
-    color: #eff1ef;
+    background-color: #0A1A30;
+    color: #B9C2CE; /* Platinum on navy */
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    color: #FFFFFF;
   }
   
   /* Custom animations */
@@ -176,7 +188,7 @@
 }
 
 html.dark .dark\:bg-black {
-  background-color: #0d0e0d;
+  background-color: #06101E; /* Deepest Midnight Navy */
 }
 
 /* Custom dark mode scrollbar */
@@ -186,27 +198,27 @@ html.dark ::-webkit-scrollbar {
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #131413;
+  background: #0A1A30; /* Midnight Navy */
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #252826;
+  background: #1C2B44; /* Navy Slate */
   border-radius: 5px;
-  border: 2px solid #131413;
+  border: 2px solid #0A1A30;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #c2a26b;
+  background: #C2A26B; /* Champagne Gold */
 }
 
 html.dark ::selection {
-  background-color: #c2a26b;
-  color: #131413;
+  background-color: #C2A26B;
+  color: #0A1A30; /* Navy text on Champagne selection */
 }
 
 ::selection {
-  background-color: #f6ecd8;
-  color: #7e6030;
+  background-color: #EFE9D9; /* Warm ivory selection */
+  color: #0A1A30; /* Midnight Navy */
 }
 
 /* Smooth transitions for theme switching */

@@ -31,7 +31,7 @@ export function CalendlyButton({ url, text = "Schedule a Consultation", classNam
   return (
     <button
       onClick={openCalendlyPopup}
-      className={`inline-flex items-center bg-talento-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-talento-700 transition-colors ${className}`}
+      className={`inline-flex items-center bg-[#C2A26B] text-[#0A1A30] px-6 py-3 rounded-lg font-semibold tracking-wide hover:bg-[#A8874F] shadow-sm hover:shadow transition-all duration-200 ${className}`}
     >
       {text}
     </button>

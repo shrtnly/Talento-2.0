@@ -60,7 +60,7 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200 relative">
+    <div className="min-h-screen bg-[#F7F4EC] dark:bg-[#0A1A30] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200 relative">
       <div className="absolute top-6 right-6">
         <ThemeToggle />
       </div>
@@ -68,10 +68,10 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <img src="/logo.png" alt="TALENTO" className="mx-auto h-16 w-auto rounded-xl shadow-md" />
-          <h2 className="mt-6 text-3xl font-bold font-heading text-gray-900 dark:text-white">
+          <h2 className="mt-6 text-3xl font-bold font-heading text-[#0A1A30] dark:text-white">
             {isLogin ? 'Welcome back' : 'Create your account'}
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-sm text-[#4A5568] dark:text-[#B9C2CE]">
             {isLogin ? "Don't have an account? " : "Already have an account? "}
             <button
               type="button"
@@ -80,31 +80,31 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
                 setError('');
                 setSuccess('');
               }}
-              className="font-medium text-talento-600 dark:text-talento-400 hover:text-talento-700 dark:hover:text-talento-300 transition-colors"
+              className="font-semibold text-[#7A5F2E] dark:text-[#C2A26B] hover:underline transition-colors"
             >
               {isLogin ? 'Sign up' : 'Sign in'}
             </button>
           </p>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700/60 p-8 transition-colors">
+        <div className="bg-white dark:bg-[#1C2B44] rounded-2xl shadow-xl border border-[#B9C2CE]/30 dark:border-[#B9C2CE]/10 p-8 transition-colors">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               {!isLogin && (
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="fullName" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
                     Full Name
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-gray-400" />
+                      <User className="h-5 w-5 text-[#9AA5B4]" />
                     </div>
                     <input
                       id="fullName"
                       name="fullName"
                       type="text"
                       required={!isLogin}
-                      className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                      className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/50 dark:border-[#2B3D5C] rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC]/40 dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white"
                       placeholder="Your full name"
                     />
                   </div>
@@ -112,38 +112,38 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
               )}
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
                   Email Address
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-gray-400" />
+                    <Mail className="h-5 w-5 text-[#9AA5B4]" />
                   </div>
                   <input
                     id="email"
                     name="email"
                     type="email"
                     required
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                    className="block w-full pl-10 pr-3 py-3 border border-[#B9C2CE]/50 dark:border-[#2B3D5C] rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC]/40 dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white"
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-[#0A1A30] dark:text-[#B9C2CE] mb-2">
                   Password
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-gray-400" />
+                    <Lock className="h-5 w-5 text-[#9AA5B4]" />
                   </div>
                   <input
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-talento-500 focus:border-transparent transition-all duration-200 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:bg-white dark:focus:bg-gray-900"
+                    className="block w-full pl-10 pr-10 py-3 border border-[#B9C2CE]/50 dark:border-[#2B3D5C] rounded-xl focus:ring-2 focus:ring-[#C2A26B] focus:border-transparent transition-all duration-200 bg-[#F7F4EC]/40 dark:bg-[#0A1A30] text-[#0A1A30] dark:text-white"
                     placeholder="Your password"
                   />
                   <button
@@ -152,9 +152,9 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" />
+                      <EyeOff className="h-5 w-5 text-[#9AA5B4] hover:text-[#4A5568] dark:hover:text-white transition-colors" />
                     ) : (
-                      <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" />
+                      <Eye className="h-5 w-5 text-[#9AA5B4] hover:text-[#4A5568] dark:hover:text-white transition-colors" />
                     )}
                   </button>
                 </div>
@@ -162,19 +162,19 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
             </div>
 
             {error && (
-              <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-xl p-4">
+              <div className="bg-[#A23B3B]/10 border border-[#A23B3B] rounded-xl p-4">
                 <div className="flex items-center">
-                  <AlertCircle className="w-5 h-5 text-red-500 mr-2 flex-shrink-0" />
-                  <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
+                  <AlertCircle className="w-5 h-5 text-[#A23B3B] mr-2 flex-shrink-0" />
+                  <p className="text-[#A23B3B] text-sm font-medium">{error}</p>
                 </div>
               </div>
             )}
 
             {success && (
-              <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/40 rounded-xl p-4">
+              <div className="bg-[#2F6B4F]/10 border border-[#2F6B4F] rounded-xl p-4">
                 <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                  <p className="text-green-700 dark:text-green-400 text-sm">{success}</p>
+                  <CheckCircle className="w-5 h-5 text-[#2F6B4F] mr-2 flex-shrink-0" />
+                  <p className="text-[#2F6B4F] text-sm font-medium">{success}</p>
                 </div>
               </div>
             )}
@@ -183,7 +183,7 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-talento-600 to-talento-700 hover:from-talento-700 hover:to-talento-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="group relative w-full flex justify-center py-3.5 px-4 text-sm font-semibold rounded-xl text-[#0A1A30] bg-[#C2A26B] hover:bg-[#A8874F] focus:outline-none focus:ring-2 focus:ring-[#C2A26B] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 {isLoading ? (
                   <>
@@ -200,7 +200,7 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
                   <button
                     type="button"
                     onClick={onSwitchToForgotPassword}
-                    className="text-sm text-talento-600 dark:text-talento-400 hover:text-talento-500 dark:hover:text-talento-300 transition-colors font-medium"
+                    className="text-sm text-[#7A5F2E] dark:text-[#C2A26B] hover:underline transition-colors font-medium"
                   >
                     Forgot your password?
                   </button>
@@ -210,7 +210,7 @@ export function AuthForm({ onSuccess, onSwitchToForgotPassword, onBack }: AuthFo
               <button
                 type="button"
                 onClick={onBack}
-                className="group relative w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-700 text-sm font-medium rounded-xl text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-talento-500 transition-all duration-200"
+                className="group relative w-full flex justify-center py-3 px-4 border border-[#B9C2CE]/50 dark:border-[#2B3D5C] text-sm font-semibold rounded-xl text-[#0A1A30] dark:text-[#B9C2CE] bg-white dark:bg-[#1C2B44] hover:bg-[#F7F4EC] dark:hover:bg-[#0A1A30] focus:outline-none transition-all duration-200"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home

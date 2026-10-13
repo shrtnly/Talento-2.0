@@ -34,13 +34,13 @@ const ThemeToggle = () => {
     <button
       type="button"
       onClick={handleThemeSwitch}
-      className="relative flex items-center justify-center w-9 h-9 rounded-full bg-white/90 dark:bg-[#181A19] border border-gray-200/90 dark:border-gray-800 text-gray-700 dark:text-talento-300 shadow-sm hover:shadow hover:bg-gray-100 dark:hover:bg-[#202321] hover:border-gray-300 dark:hover:border-gray-700 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-talento-500/50"
+      className="relative flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-[#1C2B44] border border-[#B9C2CE]/40 dark:border-[#B9C2CE]/20 text-[#0A1A30] dark:text-[#C2A26B] shadow-sm hover:shadow hover:bg-[#F7F4EC] dark:hover:bg-[#0A1A30] active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C2A26B]"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {/* Sun icon: visible in dark mode, smoothly rotates & expands */}
       <Sun
-        className={`w-[18px] h-[18px] text-talento-400 dark:text-talento-300 transition-all duration-300 ease-out absolute ${
+        className={`w-[18px] h-[18px] text-[#C2A26B] transition-all duration-300 ease-out absolute ${
           isDark
             ? 'rotate-0 scale-100 opacity-100'
             : 'rotate-90 scale-0 opacity-0 pointer-events-none'
@@ -50,7 +50,7 @@ const ThemeToggle = () => {
 
       {/* Moon icon: visible in light mode, smoothly rotates & expands */}
       <Moon
-        className={`w-[18px] h-[18px] text-gray-700 dark:text-gray-300 transition-all duration-300 ease-out absolute ${
+        className={`w-[18px] h-[18px] text-[#0A1A30] dark:text-[#B9C2CE] transition-all duration-300 ease-out absolute ${
           isDark
             ? '-rotate-90 scale-0 opacity-0 pointer-events-none'
             : 'rotate-0 scale-100 opacity-100'

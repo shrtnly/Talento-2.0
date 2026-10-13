@@ -15,71 +15,117 @@ module.exports = {
         consolas: ['Consolas', 'Courier New', 'monospace'],
       },
       colors: {
-        // Neutral palette tuned to user requested dark mode specification:
-        // Background: #131413 | Card/Box: #181A19
-        gray: {
-          50: '#f7f8f7',
-          100: '#eff1ef',
-          200: '#dde0dd',
-          300: '#bdc2bd',
-          400: '#8c948c',
-          500: '#5f665f',
-          600: '#333733',
-          700: '#252927', // borders & subtle divider lines for dark mode
-          800: '#181a19', // EXACT CARD / BOX COLOR (#181A19)
-          900: '#131413', // EXACT BACKGROUND COLOR (#131413)
-          950: '#0d0e0d', // deepest base layer
-        },
-        dark: {
-          base: '#131413',     // exact requested background color
-          surface: '#181a19',  // exact requested card/box color
-          elevated: '#212422', // elevated card/modal state
-          border: '#282b29',   // card border
-          hover: '#222523',    // card hover state
-          muted: '#8c948c',    // secondary text
-          text: '#eff1ef',     // primary text
-        },
-        // Dedicated Navy palette anchored on #0a1a30 logo background
+        // 1. Core brand palette
         navy: {
-          50: '#f0f4f9',
-          100: '#dee7f3',
-          200: '#bccde5',
-          300: '#90acd2',
-          400: '#5f87bc',
-          500: '#3967a2',
-          600: '#254e83',
-          700: '#173763',
-          800: '#0e223d',
-          900: '#0a1a30', // exact logo navy
-          950: '#06101e',
+          DEFAULT: '#0A1A30', // Midnight Navy (Primary: main background, headers, footer, primary text on light)
+          primary: '#0A1A30',
+          slate: '#1C2B44',   // Navy Slate (Deep surface: cards, panels, hover on navy)
+          deep: '#06101E',
+          50: '#F0F4F9',
+          100: '#DEE7F3',
+          200: '#BCCDE5',
+          300: '#90ACD2',
+          400: '#5F87BC',
+          500: '#3967A2',
+          600: '#254E83',
+          700: '#1C2B44',     // Navy Slate
+          800: '#122035',
+          900: '#0A1A30',     // Midnight Navy
+          950: '#06101E',
         },
-        // Talento Brand Palette - Prestige Champagne Gold anchored on #c2a26b logo emblem
+        champagne: {
+          DEFAULT: '#C2A26B', // Champagne Gold (Signature accent: logo, headlines on dark, buttons, icons, dividers)
+          hover: '#A8874F',   // Button hover state
+          50: '#FAF6EE',
+          100: '#F6ECD8',
+          200: '#EEDB86',
+          300: '#E0C797',
+          400: '#D2B47C',
+          500: '#C2A26B',     // Signature accent
+          600: '#A8874F',     // Darkened hover
+          700: '#7A5F2E',     // Deep Bronze
+          800: '#5F4720',
+          900: '#3F2E12',
+        },
+        platinum: {
+          DEFAULT: '#B9C2CE', // Platinum (Secondary: taglines, secondary text & borders on dark)
+          light: '#D3DAE3',
+          dark: '#9AA5B4',    // Steel
+        },
+
+        // 2. Supporting palette
+        ivory: {
+          DEFAULT: '#F7F4EC', // Ivory (Light background instead of pure white)
+          50: '#FCFBF7',
+          100: '#F7F4EC',
+          200: '#EFE9D9',
+          300: '#E3DCBF',
+        },
+        graphite: {
+          DEFAULT: '#4A5568', // Graphite (Body text on ivory or white)
+          light: '#718096',
+          dark: '#2D3748',
+        },
+        steel: {
+          DEFAULT: '#9AA5B4', // Steel (Muted text / captions / small print on navy)
+          light: '#B4BDC9',
+          dark: '#7D8A9A',
+        },
+        bronze: {
+          DEFAULT: '#7A5F2E', // Deep Bronze (Gold text and links on ivory or white)
+          hover: '#634C24',
+        },
+        alert: {
+          green: '#2F6B4F',   // Muted deep green for functional alerts
+          red: '#A23B3B',     // Muted red for functional alerts
+        },
+
+        // Dark mode semantic tokens anchored on Midnight Navy #0A1A30 & Navy Slate #1C2B44
+        dark: {
+          base: '#0A1A30',     // Midnight Navy
+          surface: '#1C2B44',  // Navy Slate
+          elevated: '#243553', // Elevated card / modal
+          border: '#2B3D5C',   // Subtle border on navy
+          hover: '#243553',    // Hover on navy slate
+          muted: '#9AA5B4',    // Steel
+          text: '#F7F4EC',     // Ivory on dark
+        },
+
+        // Neutral gray mapped to brand shades (Midnight Navy dark mode)
+        gray: {
+          50: '#FAF9F5',
+          100: '#F7F4EC',     // Ivory
+          200: '#E2E6EA',
+          300: '#B9C2CE',     // Platinum
+          400: '#9AA5B4',     // Steel
+          500: '#718096',
+          600: '#4A5568',     // Graphite
+          700: '#2B3D5C',     // Navy border
+          800: '#1C2B44',     // Navy Slate card
+          900: '#0A1A30',     // Midnight Navy base
+          950: '#06101E',     // Deepest navy
+        },
+
+        // Aliases for backwards-compatibility with existing templates
         talento: {
-          50: '#faf6ee',
-          100: '#f6ecd8',
-          200: '#eedbb6',
-          300: '#e0c797',
-          400: '#d2b47c',
-          500: '#c2a26b', // exact logo gold
-          600: '#9e7d47', // rich executive gold for high contrast
-          700: '#7e6030', // deep bronze gold
-          800: '#5f4720',
-          900: '#3f2e12',
-          950: '#241a0a',
+          50: '#FAF6EE',
+          100: '#F6ECD8',
+          200: '#EEDB86',
+          300: '#E0C797',
+          400: '#D2B47C',
+          500: '#C2A26B',
+          600: '#A8874F',
+          700: '#7A5F2E',     // Deep Bronze
+          800: '#5F4720',
+          900: '#0A1A30',
+          950: '#06101E',
         },
-        // Gold alias for design flexibility
         gold: {
-          50: '#faf6ee',
-          100: '#f6ecd8',
-          200: '#eedbb6',
-          300: '#e0c797',
-          400: '#d2b47c',
-          500: '#c2a26b',
-          600: '#9e7d47',
-          700: '#7e6030',
-          800: '#5f4720',
-          900: '#3f2e12',
-          950: '#241a0a',
+          DEFAULT: '#C2A26B',
+          hover: '#A8874F',
+          500: '#C2A26B',
+          600: '#A8874F',
+          700: '#7A5F2E',
         }
       }
     },
