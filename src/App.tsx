@@ -547,7 +547,7 @@ className="relative bg-[#08162A] text-white pt-24 pb-16 md:pt-32 md:pb-12 lg:py-
 {/* Brand Eyebrow from PDF */}
 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/30 text-[#C2A163] text-xs font-semibold tracking-[0.18em] uppercase mb-5 sm:mb-6 self-center lg:self-start">
   <span className="w-1.5 h-1.5 rounded-full bg-[#C2A163] animate-pulse"></span>
-  Executive Search & Boutique Headhunting
+  Global HR Agency & Executive Search
 </div>
 
 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-serif font-bold text-white mb-4 sm:mb-6 tracking-tight leading-[1.12]">
