@@ -931,7 +931,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
               </button>
-              <img src="/logo.png" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
+              <img src="/logo.png?v=2" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
             </div>
             
             <div className="flex items-center space-x-3 sm:space-x-4">
