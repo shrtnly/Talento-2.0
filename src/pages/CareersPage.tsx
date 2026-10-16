@@ -482,7 +482,7 @@ Best regards,
               <img
                 src="/logo.png?v=2"
                 alt="TALENTO"
-                className="h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain rounded-lg shadow-sm dark:shadow-none transition-all duration-200"
+                className="h-[62px] sm:h-14 md:h-16 lg:h-16 w-auto object-contain rounded-lg shadow-sm dark:shadow-none transition-all duration-200"
               />
             </div>
             <div className="flex items-center">
