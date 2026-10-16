@@ -922,7 +922,7 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
       {/* Header */}
       <div className="bg-[#F7F4EC]/95 dark:bg-[#0A1A30]/95 shadow-sm border-b border-[#B9C2CE]/20 dark:border-[#B9C2CE]/10 backdrop-blur-sm sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20 lg:h-22">
             <div className="flex items-center">
               <button
                 onClick={onBack}
@@ -931,7 +931,11 @@ export function DashboardPage({ user, onBack, onSignOut }: DashboardPageProps) {
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Home
               </button>
-              <img src="/logo.png?v=2" alt="TALENTO" className="h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
+              <img
+                src="/logo.png?v=2"
+                alt="TALENTO"
+                className="h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain rounded-lg shadow-sm dark:shadow-none transition-all duration-200"
+              />
             </div>
             
             <div className="flex items-center space-x-3 sm:space-x-4">

@@ -269,10 +269,14 @@ return (
 {/* Navigation */}
 <nav className="bg-[#F7F4EC]/95 dark:bg-[#08162A]/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-colors duration-200 border-b border-[#B9C2CE]/30 dark:border-[#1B3047]">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div className="flex justify-between items-center h-16">
+<div className="flex justify-between items-center h-20 lg:h-22">
 <div className="flex items-center">
-<a href="#home" className="inline-block transition-opacity hover:opacity-90">
-<img src="/logo.png?v=2" alt="TALENTO" className="h-9 sm:h-10 w-auto rounded-lg shadow-sm dark:shadow-none" />
+<a href="#home" className="inline-block transition-transform hover:scale-[1.02] active:scale-[0.98]">
+<img
+  src="/logo.png?v=2"
+  alt="TALENTO"
+  className="h-12 sm:h-14 md:h-16 lg:h-16 w-auto object-contain rounded-lg shadow-sm dark:shadow-none transition-all duration-200"
+/>
 </a>
 </div>
 
@@ -517,12 +521,12 @@ Sign In
 
 <section
 id="home"
-className="relative bg-[#08162A] text-white pt-24 pb-16 md:pt-32 md:pb-12 lg:py-24 lg:min-h-screen overflow-hidden transition-colors duration-200 flex items-center"
+className="relative bg-[#F7F4EC] dark:bg-[#08162A] text-[#0A1A2E] dark:text-white pt-24 pb-16 md:pt-32 md:pb-12 lg:py-24 lg:min-h-screen overflow-hidden transition-colors duration-200 flex items-center"
 >
 {/* Ambient subtle glow pattern */}
 <div className="absolute inset-0 opacity-25 pointer-events-none">
 <div className="absolute top-0 left-0 w-96 h-96 bg-[#C2A163]/12 rounded-full filter blur-3xl animate-light-slow"></div>
-<div className="absolute bottom-0 right-0 w-96 h-96 bg-[#112640]/80 rounded-full filter blur-3xl animate-light-slow" style={{ animationDelay: '7s' }}></div>
+<div className="absolute bottom-0 right-0 w-96 h-96 bg-[#B9C2CE]/30 dark:bg-[#112640]/80 rounded-full filter blur-3xl animate-light-slow" style={{ animationDelay: '7s' }}></div>
 </div>
 
 {/* Animated connection lines - hidden on mobile for performance */}
@@ -544,21 +548,21 @@ className="relative bg-[#08162A] text-white pt-24 pb-16 md:pt-32 md:pb-12 lg:py-
 
 {/* Left Content */}
 <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left mb-6 lg:mb-0">
-{/* Brand Eyebrow from PDF */}
-<div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/30 text-[#C2A163] text-xs font-semibold tracking-[0.18em] uppercase mb-5 sm:mb-6 self-center lg:self-start">
-  <span className="w-1.5 h-1.5 rounded-full bg-[#C2A163] animate-pulse"></span>
-  Global HR Agency & Executive Search
+{/* Brand Eyebrow */}
+<div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/40 dark:border-[#C2A163]/30 text-[#7A5F2E] dark:text-[#C2A163] text-[10px] xs:text-[11px] sm:text-xs font-semibold tracking-[0.08em] sm:tracking-[0.15em] md:tracking-[0.18em] uppercase mb-5 sm:mb-6 self-center lg:self-start max-w-full text-center transition-all">
+  <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#7A5F2E] dark:bg-[#C2A163] animate-pulse"></span>
+  <span className="whitespace-normal sm:whitespace-nowrap">Global HR Agency & Executive Search</span>
 </div>
 
-<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-serif font-bold text-white mb-4 sm:mb-6 tracking-tight leading-[1.12]">
+<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-serif font-bold text-[#0A1A2E] dark:text-white mb-4 sm:mb-6 tracking-tight leading-[1.12]">
   Scale your team with{' '}
-  <span className="text-[#C2A163] italic font-normal">high quality, vetted</span>{' '}
+  <span className="text-[#7A5F2E] dark:text-[#C2A163] italic font-normal">high quality, vetted</span>{' '}
   professionals
 </h1>
 
-<p className="text-base sm:text-lg text-[#A9B8CC] mb-8 sm:mb-10 max-w-2xl lg:max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-normal">
+<p className="text-base sm:text-lg text-[#4A5568] dark:text-[#A9B8CC] mb-8 sm:mb-10 max-w-2xl lg:max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-normal">
   From dynamic start-ups to multinational enterprises, exceptional leadership is the catalyst for enduring growth.{' '}
-  <strong className="font-semibold text-[#C2A163]">TALENTO</strong> delivers rigorous, confidential talent acquisition tailored to executive demand.
+  <strong className="font-semibold text-[#7A5F2E] dark:text-[#C2A163]">TALENTO</strong> delivers rigorous, confidential talent acquisition tailored to executive demand.
 </p>
 
 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 lg:mb-10 w-full sm:w-auto">
@@ -575,7 +579,7 @@ Explore Careers
 href="https://calendly.com/talentoagency2/30min"
 target="_blank"
 rel="noopener noreferrer"
-className="group relative overflow-hidden border border-[#C2A163] hover:bg-[#C2A163]/10 active:scale-95 text-[#C2A163] px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-md font-sans"
+className="group relative overflow-hidden border-2 border-[#7A5F2E] dark:border-[#C2A163] hover:bg-[#C2A163]/10 active:scale-95 text-[#7A5F2E] dark:text-[#C2A163] px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-sm font-sans"
 >
 <span className="relative z-10 flex items-center font-medium">
 Schedule a Consultation
@@ -587,18 +591,18 @@ Schedule a Consultation
 </div>
 
 {/* Stats bar - responsive with PDF editorial numbers */}
-<div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-md mx-auto lg:mx-0 pt-6 border-t border-[#1B3047]">
+<div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-md mx-auto lg:mx-0 pt-6 border-t border-[#B9C2CE]/40 dark:border-[#1B3047]">
 <div className="text-center lg:text-left">
-<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#C2A163]">100+</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans mt-0.5">Placements</div>
+<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#7A5F2E] dark:text-[#C2A163]">100+</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans mt-0.5">Placements</div>
 </div>
-<div className="text-center lg:text-left border-x border-[#1B3047] px-2 sm:px-4">
-<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#C2A163]">95%</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans mt-0.5">Success Rate</div>
+<div className="text-center lg:text-left border-x border-[#B9C2CE]/40 dark:border-[#1B3047] px-2 sm:px-4">
+<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#7A5F2E] dark:text-[#C2A163]">95%</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans mt-0.5">Success Rate</div>
 </div>
 <div className="text-center lg:text-left">
-<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#C2A163]">15+</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans mt-0.5">Industries</div>
+<div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif tracking-tight text-[#7A5F2E] dark:text-[#C2A163]">15+</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans mt-0.5">Industries</div>
 </div>
 </div>
 </div>
@@ -768,26 +772,26 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
 </section>
 
 {/* NEW: THE TALENTO EXECUTIVE CHARTER (Directly from PDF Staffing Agreement) */}
-<section id="charter" className="py-20 sm:py-24 bg-[#08162A] text-white border-t border-[#1B3047] relative overflow-hidden transition-colors duration-200">
+<section id="charter" className="py-20 sm:py-24 bg-[#FCFBF7] dark:bg-[#08162A] text-[#0A1A2E] dark:text-white border-t border-[#B9C2CE]/30 dark:border-[#1B3047] relative overflow-hidden transition-colors duration-200">
 {/* Background subtle glow */}
 <div className="absolute inset-0 opacity-15 pointer-events-none">
   <div className="absolute -top-40 right-10 w-96 h-96 bg-[#C2A163]/20 rounded-full blur-3xl"></div>
-  <div className="absolute -bottom-40 left-10 w-96 h-96 bg-[#112640]/80 rounded-full blur-3xl"></div>
+  <div className="absolute -bottom-40 left-10 w-96 h-96 bg-[#B9C2CE]/30 dark:bg-[#112640]/80 rounded-full blur-3xl"></div>
 </div>
 
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 {/* Eyebrow and Section Heading */}
 <div className="text-center mb-14 sm:mb-16">
-<div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#C2A163] uppercase mb-3">
+<div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#7A5F2E] dark:text-[#C2A163] uppercase mb-3">
   <span>◆</span>
   <span>The TALENTO Client Commitment</span>
   <span>◆</span>
 </div>
-<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 tracking-tight">
+<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-4 tracking-tight">
   Clear Terms, Transparent Partnership
 </h2>
 <div className="w-16 h-0.5 bg-[#C2A163] mx-auto mb-4"></div>
-<p className="text-base sm:text-lg text-[#A9B8CC] max-w-2xl mx-auto leading-relaxed font-sans">
+<p className="text-base sm:text-lg text-[#4A5568] dark:text-[#A9B8CC] max-w-2xl mx-auto leading-relaxed font-sans">
   Our executive search charter provides client-first certainty: guaranteed replacements, full rehire discretion, agile timelines, and verifiable billing.
 </p>
 </div>
@@ -795,42 +799,42 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
 {/* 4 Pillars Grid (Pages 2-7 of PDF) */}
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
 {/* Pillar 1: Replacement Guarantee (PDF Slide 3) */}
-<div className="bg-[#0E223D] border border-[#1B3047] hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between">
+<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
 <div>
   <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/20">
+    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
       Clause 9.1 · Qualifying Criteria
     </span>
-    <ShieldCheck className="w-6 h-6 text-[#C2A163]" />
+    <ShieldCheck className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
   </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
     Both Exits Covered, Within 30 Days
   </h3>
-  <p className="text-sm text-[#A9B8CC] leading-relaxed mb-6 font-sans">
+  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
     Complete protection: voluntary candidate resignation and documented performance termination within thirty (30) calendar days are 100% covered.
   </p>
 
   {/* Metrics box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#08162A] border border-[#1B3047] mb-5">
+  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
     <div>
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#C2A163]">30 Days</div>
-      <div className="text-xs text-[#A9B8CC] mt-0.5">Coverage from start date</div>
+      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#7A5F2E] dark:text-[#C2A163]">30 Days</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Coverage from start date</div>
     </div>
-    <div className="border-l border-[#1B3047] pl-3">
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-white">1 Free</div>
-      <div className="text-xs text-[#A9B8CC] mt-0.5">Complimentary replacement</div>
+    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
+      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#0A1A2E] dark:text-white">1 Free</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Complimentary replacement</div>
     </div>
   </div>
 
   {/* Covered pill items */}
   <div className="flex flex-wrap gap-2 text-xs">
-    <span className="px-2.5 py-1 rounded-md bg-[#08162A] border border-[#1B3047] text-[#A9B8CC]">
-      <Check className="inline w-3 h-3 text-[#C2A163] mr-1" />Voluntary Resignation
+    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
+      <Check className="inline w-3 h-3 text-[#7A5F2E] dark:text-[#C2A163] mr-1" />Voluntary Resignation
     </span>
-    <span className="px-2.5 py-1 rounded-md bg-[#08162A] border border-[#1B3047] text-[#A9B8CC]">
-      <Check className="inline w-3 h-3 text-[#C2A163] mr-1" />Performance Termination
+    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
+      <Check className="inline w-3 h-3 text-[#7A5F2E] dark:text-[#C2A163] mr-1" />Performance Termination
     </span>
-    <span className="px-2.5 py-1 rounded-md bg-[#08162A] border border-[#1B3047] text-[#A9B8CC]">
+    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
       Pool delivered in 45 days
     </span>
   </div>
@@ -838,36 +842,36 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
 </div>
 
 {/* Pillar 2: Client Discretion (PDF Slide 5) */}
-<div className="bg-[#0E223D] border border-[#1B3047] hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between">
+<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
 <div>
   <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/20">
+    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
       Non-Rehire Policy
     </span>
-    <Scale className="w-6 h-6 text-[#C2A163]" />
+    <Scale className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
   </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
     You Keep Full Discretion
   </h3>
-  <p className="text-sm text-[#A9B8CC] leading-relaxed mb-6 font-sans">
+  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
     We eliminated rigid 12-month re-hire restrictions. Clients retain complete business autonomy to retain, re-engage, or re-hire departing talent at any time.
   </p>
 
   {/* Before / After box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#08162A] border border-[#1B3047] mb-5">
+  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
     <div>
       <div className="text-xs font-semibold uppercase tracking-wider text-[#A23B3B] mb-1">Standard Market</div>
-      <div className="font-serif text-lg font-semibold text-[#A9B8CC] line-through">12 Months Lock</div>
-      <div className="text-xs text-[#A9B8CC]/80 mt-0.5">Restrictive non-rehire</div>
+      <div className="font-serif text-lg font-semibold text-[#718096] dark:text-[#A9B8CC] line-through">12 Months Lock</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC]/80 mt-0.5">Restrictive non-rehire</div>
     </div>
-    <div className="border-l border-[#1B3047] pl-3">
-      <div className="text-xs font-semibold uppercase tracking-wider text-[#C2A163] mb-1">With TALENTO</div>
-      <div className="font-serif text-lg font-bold text-[#C2A163]">Restriction Removed</div>
-      <div className="text-xs text-[#A9B8CC] mt-0.5">Full client discretion retained</div>
+    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
+      <div className="text-xs font-semibold uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] mb-1">With TALENTO</div>
+      <div className="font-serif text-lg font-bold text-[#7A5F2E] dark:text-[#C2A163]">Restriction Removed</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Full client discretion retained</div>
     </div>
   </div>
 
-  <div className="text-xs text-[#A9B8CC] flex items-center gap-2">
+  <div className="text-xs text-[#718096] dark:text-[#A9B8CC] flex items-center gap-2">
     <span className="w-2 h-2 rounded-full bg-[#C2A163]"></span>
     <span>Fair balance: Standard placement fee applies only upon active re-engagement within 12 months.</span>
   </div>
@@ -875,41 +879,41 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
 </div>
 
 {/* Pillar 3: Replacement Timeline (PDF Slide 4 & 6) */}
-<div className="bg-[#0E223D] border border-[#1B3047] hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between">
+<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
 <div>
   <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/20">
+    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
       Clause 5 & 9.2 · Delivery Timeline
     </span>
-    <Clock className="w-6 h-6 text-[#C2A163]" />
+    <Clock className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
   </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
     A 45-Day Window That Flexes With You
   </h3>
-  <p className="text-sm text-[#A9B8CC] leading-relaxed mb-6 font-sans">
+  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
     Agile executive search speed paired with institutional flexibility. Shortlists are delivered quickly, with generous evaluation windows extendable upon request.
   </p>
 
   {/* 3 Step Timeline */}
-  <div className="grid grid-cols-3 gap-2 p-3 sm:p-4 rounded-xl bg-[#08162A] border border-[#1B3047] mb-5 text-center">
+  <div className="grid grid-cols-3 gap-2 p-3 sm:p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5 text-center">
     <div>
-      <div className="text-xs text-[#C2A163] font-serif font-bold">Step 01</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-white mt-0.5">Day 1</div>
-      <div className="text-[11px] text-[#A9B8CC] mt-0.5">Work order started</div>
+      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 01</div>
+      <div className="font-serif text-base sm:text-lg font-bold text-[#0A1A2E] dark:text-white mt-0.5">Day 1</div>
+      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Work order started</div>
     </div>
-    <div className="border-x border-[#1B3047] px-1 sm:px-2">
-      <div className="text-xs text-[#C2A163] font-serif font-bold">Step 02</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-[#C2A163] mt-0.5">15 Days</div>
-      <div className="text-[11px] text-[#A9B8CC] mt-0.5">Shortlist presented</div>
+    <div className="border-x border-[#B9C2CE]/40 dark:border-[#1B3047] px-1 sm:px-2">
+      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 02</div>
+      <div className="font-serif text-base sm:text-lg font-bold text-[#7A5F2E] dark:text-[#C2A163] mt-0.5">15 Days</div>
+      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Shortlist presented</div>
     </div>
     <div>
-      <div className="text-xs text-[#C2A163] font-serif font-bold">Step 03</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-white mt-0.5">45 Days</div>
-      <div className="text-[11px] text-[#A9B8CC] mt-0.5">Evaluation & offer</div>
+      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 03</div>
+      <div className="font-serif text-base sm:text-lg font-bold text-[#0A1A2E] dark:text-white mt-0.5">45 Days</div>
+      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Evaluation & offer</div>
     </div>
   </div>
 
-  <div className="text-xs text-[#A9B8CC] flex items-center gap-2">
+  <div className="text-xs text-[#718096] dark:text-[#A9B8CC] flex items-center gap-2">
     <span className="w-2 h-2 rounded-full bg-[#C2A163]"></span>
     <span>Extendable by simple written email agreement whenever hiring rounds demand extra time.</span>
   </div>
@@ -917,37 +921,37 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
 </div>
 
 {/* Pillar 4: Transparent Fee Structure (PDF Slide 7 & 8) */}
-<div className="bg-[#0E223D] border border-[#1B3047] hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between">
+<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
 <div>
   <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/10 border border-[#C2A163]/20">
+    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
       Fees & Charges · Verifiable Terms
     </span>
-    <Award className="w-6 h-6 text-[#C2A163]" />
+    <Award className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
   </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3">
+  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
     Fixed, Verifiable & Known at Offer
   </h3>
-  <p className="text-sm text-[#A9B8CC] leading-relaxed mb-6 font-sans">
+  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
     Professional fee anchored strictly to the candidate's fixed compensation. Zero hidden markups, zero variable bonuses included in fee base.
   </p>
 
   {/* Metric and Fee Basis Box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#08162A] border border-[#1B3047] mb-5">
+  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
     <div>
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#C2A163]">8%</div>
-      <div className="text-xs text-[#A9B8CC] mt-0.5">Annual Fixed Gross CTC</div>
+      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#7A5F2E] dark:text-[#C2A163]">8%</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Annual Fixed Gross CTC</div>
     </div>
-    <div className="border-l border-[#1B3047] pl-3">
-      <div className="font-serif text-base font-bold text-white">Pure Fixed Base</div>
-      <div className="text-xs text-[#A9B8CC] mt-0.5">No bonus/variable tax</div>
+    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
+      <div className="font-serif text-base font-bold text-[#0A1A2E] dark:text-white">Pure Fixed Base</div>
+      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">No bonus/variable tax</div>
     </div>
   </div>
 
   <div className="flex flex-wrap gap-2 text-xs">
-    <span className="px-2 py-0.5 rounded bg-[#08162A] text-[#C2A163] border border-[#C2A163]/30">✓ Base Salary Included</span>
-    <span className="px-2 py-0.5 rounded bg-[#08162A] text-[#A9B8CC] border border-[#1B3047]">✕ Performance Bonuses Excluded</span>
-    <span className="px-2 py-0.5 rounded bg-[#08162A] text-[#A9B8CC] border border-[#1B3047]">✕ Sales Commissions Excluded</span>
+    <span className="px-2 py-0.5 rounded bg-[#C2A163]/15 dark:bg-[#08162A] text-[#7A5F2E] dark:text-[#C2A163] border border-[#C2A163]/40 dark:border-[#C2A163]/30">✓ Base Salary Included</span>
+    <span className="px-2 py-0.5 rounded bg-[#F7F4EC] dark:bg-[#08162A] text-[#718096] dark:text-[#A9B8CC] border border-[#B9C2CE]/40 dark:border-[#1B3047]">✕ Performance Bonuses Excluded</span>
+    <span className="px-2 py-0.5 rounded bg-[#F7F4EC] dark:bg-[#08162A] text-[#718096] dark:text-[#A9B8CC] border border-[#B9C2CE]/40 dark:border-[#1B3047]">✕ Sales Commissions Excluded</span>
   </div>
 </div>
 </div>
@@ -1238,41 +1242,41 @@ As a bespoke executive boutique, we deliver high-touch discretion and precision 
 
 {/* Right Track Record Card - PDF Obsidian Navy styling */}
 <div className="relative">
-<div className="bg-[#0E223D] rounded-2xl p-7 sm:p-9 text-white border border-[#C2A163]/30 shadow-2xl relative overflow-hidden">
+<div className="bg-white dark:bg-[#0E223D] rounded-2xl p-7 sm:p-9 text-[#0A1A2E] dark:text-white border border-[#B9C2CE]/40 dark:border-[#C2A163]/30 shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors">
 <div className="absolute top-0 right-0 w-48 h-48 bg-[#C2A163]/10 rounded-full blur-2xl pointer-events-none"></div>
 
 <div className="flex items-center justify-between mb-8">
-  <h3 className="text-2xl font-serif font-bold text-white flex items-center">
-    <span className="w-2.5 h-2.5 rounded-full bg-[#C2A163] mr-3 animate-pulse"></span>
+  <h3 className="text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white flex items-center">
+    <span className="w-2.5 h-2.5 rounded-full bg-[#7A5F2E] dark:bg-[#C2A163] mr-3 animate-pulse"></span>
     Our Track Record
   </h3>
-  <span className="text-xs font-mono uppercase text-[#C2A163] tracking-widest px-3 py-1 rounded-full bg-[#08162A] border border-[#1B3047]">
+  <span className="text-xs font-mono uppercase text-[#7A5F2E] dark:text-[#C2A163] tracking-widest px-3 py-1 rounded-full bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047]">
     Bespoke Metric
   </span>
 </div>
 
 <div className="grid grid-cols-2 gap-4 sm:gap-6">
-<div className="text-center p-4 sm:p-5 rounded-xl bg-[#08162A] border border-[#1B3047] hover:border-[#C2A163]/40 transition-colors">
-<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#C2A163]">100+</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans">Executive Placements</div>
+<div className="text-center p-4 sm:p-5 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 transition-colors">
+<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#7A5F2E] dark:text-[#C2A163]">100+</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">Executive Placements</div>
 </div>
-<div className="text-center p-4 sm:p-5 rounded-xl bg-[#08162A] border border-[#1B3047] hover:border-[#C2A163]/40 transition-colors">
-<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#C2A163]">95%</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans">Retention & Satisfaction</div>
+<div className="text-center p-4 sm:p-5 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 transition-colors">
+<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#7A5F2E] dark:text-[#C2A163]">95%</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">Retention & Satisfaction</div>
 </div>
-<div className="text-center p-4 sm:p-5 rounded-xl bg-[#08162A] border border-[#1B3047] hover:border-[#C2A163]/40 transition-colors">
-<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#C2A163]">10+</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans">Corporate Partners</div>
+<div className="text-center p-4 sm:p-5 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 transition-colors">
+<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#7A5F2E] dark:text-[#C2A163]">10+</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">Corporate Partners</div>
 </div>
-<div className="text-center p-4 sm:p-5 rounded-xl bg-[#08162A] border border-[#1B3047] hover:border-[#C2A163]/40 transition-colors">
-<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#C2A163]">15+</div>
-<div className="text-xs sm:text-sm text-[#A9B8CC] font-sans">Core Industry Sectors</div>
+<div className="text-center p-4 sm:p-5 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 transition-colors">
+<div className="text-3xl sm:text-4xl font-bold font-serif tracking-tight mb-1 text-[#7A5F2E] dark:text-[#C2A163]">15+</div>
+<div className="text-xs sm:text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">Core Industry Sectors</div>
 </div>
 </div>
 
-<div className="mt-8 pt-6 border-t border-[#1B3047] flex items-center justify-between text-xs text-[#A9B8CC]">
+<div className="mt-8 pt-6 border-t border-[#B9C2CE]/40 dark:border-[#1B3047] flex items-center justify-between text-xs text-[#718096] dark:text-[#A9B8CC]">
   <span>Executive Search & Leadership Advisory</span>
-  <span className="text-[#C2A163] font-serif font-semibold">TALENTO · Global</span>
+  <span className="text-[#7A5F2E] dark:text-[#C2A163] font-serif font-semibold">TALENTO · Global</span>
 </div>
 </div>
 </div>
@@ -1714,15 +1718,15 @@ Registering Candidacy...
 </section>
 
 {/* Footer: Obsidian Navy with champagne rule & diamond motif */}
-<footer className="bg-[#06101E] text-[#A9B8CC] py-14 border-t border-[#C2A163]/30 transition-colors duration-200">
+<footer className="bg-[#EFE9D9]/80 dark:bg-[#06101E] text-[#4A5568] dark:text-[#A9B8CC] py-14 border-t border-[#C2A163]/40 dark:border-[#C2A163]/30 transition-colors duration-200">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
 <div className="col-span-1 md:col-span-2">
-<img src="/logo.png?v=2" alt="TALENTO" className="h-10 w-auto rounded-lg mb-4" />
-<p className="text-[#A9B8CC] leading-relaxed max-w-md text-sm font-sans mb-4">
+<img src="/logo.png?v=2" alt="TALENTO" className="h-14 sm:h-16 md:h-18 w-auto object-contain rounded-lg mb-5" />
+<p className="text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed max-w-md text-sm font-sans mb-4">
 TALENTO is a premier boutique headhunting firm specializing in executive search, board advisory, and leadership talent acquisition across Asia-Pacific and global frontiers.
 </p>
-<div className="flex items-center gap-2 text-xs text-[#C2A163]">
+<div className="flex items-center gap-2 text-xs text-[#7A5F2E] dark:text-[#C2A163]">
   <span>◆</span>
   <span>Discretion</span>
   <span>·</span>
@@ -1733,30 +1737,30 @@ TALENTO is a premier boutique headhunting firm specializing in executive search,
 </div>
 
 <div>
-<h3 className="text-base font-serif font-bold mb-4 text-white uppercase tracking-wider">Practice Areas</h3>
-<ul className="space-y-2.5 text-sm text-[#A9B8CC] font-sans">
-<li><a href="#services" className="hover:text-[#C2A163] transition-colors">C-Suite Talent Hunt</a></li>
-<li><a href="#services" className="hover:text-[#C2A163] transition-colors">Executive Search</a></li>
-<li><a href="#services" className="hover:text-[#C2A163] transition-colors">Interim Leadership</a></li>
-<li><a href="#charter" className="hover:text-[#C2A163] transition-colors">Executive Search Charter</a></li>
-<li><a href="#industries" className="hover:text-[#C2A163] transition-colors">Sector Coverage</a></li>
+<h3 className="text-base font-serif font-bold mb-4 text-[#0A1A2E] dark:text-white uppercase tracking-wider">Practice Areas</h3>
+<ul className="space-y-2.5 text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">
+<li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">C-Suite Talent Hunt</a></li>
+<li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Executive Search</a></li>
+<li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Interim Leadership</a></li>
+<li><a href="#charter" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Executive Search Charter</a></li>
+<li><a href="#industries" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Sector Coverage</a></li>
 </ul>
 </div>
 
 <div>
-<h3 className="text-base font-serif font-bold mb-4 text-white uppercase tracking-wider">Contact & Inquiries</h3>
-<ul className="space-y-2.5 text-sm text-[#A9B8CC] font-sans">
-<li className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#C2A163]" /> info@talento-glb.com</li>
-<li className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#C2A163]" /> +880 1973 591514</li>
-<li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-[#C2A163] mt-0.5 flex-shrink-0" /> Plot 37, Floor 3, Road 11, Block H, Banani, Dhaka-1213</li>
+<h3 className="text-base font-serif font-bold mb-4 text-[#0A1A2E] dark:text-white uppercase tracking-wider">Contact & Inquiries</h3>
+<ul className="space-y-2.5 text-sm text-[#4A5568] dark:text-[#A9B8CC] font-sans">
+<li className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A163]" /> info@talento-glb.com</li>
+<li className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A163]" /> +880 1973 591514</li>
+<li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-[#7A5F2E] dark:text-[#C2A163] mt-0.5 flex-shrink-0" /> Plot 37, Floor 3, Road 11, Block H, Banani, Dhaka-1213</li>
 </ul>
 </div>
 </div>
 
-<div className="border-t border-[#1B3047] pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#A9B8CC]/80 gap-4">
+<div className="border-t border-[#B9C2CE]/40 dark:border-[#1B3047] pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#718096] dark:text-[#A9B8CC]/80 gap-4">
 <p>&copy; 2026 TALENTO. All rights reserved. Boutique Executive Search & Leadership Recruitment.</p>
 <div className="flex items-center gap-4">
-  <a href="#home" className="hover:text-[#C2A163] transition-colors">Back to Top ↑</a>
+  <a href="#home" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Back to Top ↑</a>
 </div>
 </div>
 </div>

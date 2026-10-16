@@ -47,7 +47,7 @@ export function ForgotPassword({ onBack, onBackToHome }: ForgotPasswordProps) {
 
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <img src="/logo.png?v=2" alt="TALENTO" className="mx-auto h-16 w-auto rounded-xl shadow-md" />
+          <img src="/logo.png?v=2" alt="TALENTO" className="mx-auto h-20 sm:h-24 w-auto object-contain rounded-xl shadow-md" />
           <h2 className="mt-6 text-3xl font-bold font-heading text-[#0A1A30] dark:text-white">Reset your password</h2>
           <p className="mt-2 text-sm text-[#4A5568] dark:text-[#B9C2CE]">
             Enter your email address and we'll send you a link to reset your password.

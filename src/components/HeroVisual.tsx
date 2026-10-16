@@ -63,7 +63,7 @@ const HeroVisual = () => {
       role="img"
     >
       {/* Soft brand glow behind the man – slow ambient breathing */}
-      <div className="absolute left-[30%] top-[18%] w-[56%] aspect-square rounded-full bg-gradient-to-tr from-[#C2A26B]/20 via-[#1C2B44]/20 to-transparent dark:from-[#C2A26B]/15 dark:via-[#1C2B44]/30 blur-3xl animate-light-slow pointer-events-none" />
+      <div className="absolute left-[30%] top-[18%] w-[56%] aspect-square rounded-full bg-gradient-to-tr from-[#C2A26B]/15 via-[#B9C2CE]/15 to-transparent dark:from-[#C2A26B]/15 dark:via-[#1C2B44]/30 blur-3xl animate-light-slow pointer-events-none" />
 
       {/* ---------- Orbit 1 (outer) ---------- */}
       <div
