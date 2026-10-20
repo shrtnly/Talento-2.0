@@ -18,10 +18,6 @@ import {
   LogOut,
   Search,
   ChevronDown,
-  ShieldCheck,
-  Scale,
-  Clock,
-  Award,
   Check,
   Sparkles,
   Target
@@ -31,12 +27,71 @@ import { AuthForm } from './components/AuthForm';
 import { ForgotPassword } from './components/ForgotPassword';
 import { DashboardPage } from './pages/DashboardPage';
 import { CareersPage } from './pages/CareersPage';
+import { InsightsPage } from './pages/InsightsPage';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
+import { NewsletterSection } from './components/NewsletterSection';
 import ThemeToggle from './components/ThemeToggle'; // Fixed import
 import HeroVisual from './components/HeroVisual';
 import type { CandidateApplication, ContactForm, AuthUser, UserProfile } from './lib/supabase';
-type ViewType = 'home' | 'auth' | 'forgot-password' | 'dashboard' | 'careers';
+
+const HOME_FAQS = [
+  {
+    q: 'What differentiates TALENTO from traditional recruitment agencies?',
+    a: 'Unlike high-volume transactional recruitment agencies that rely on passive resume databases and automated keyword matching, TALENTO operates as a bespoke executive search boutique. We engage exclusively in confidential, research-driven headhunting for C-suite, board-level, and mission-critical leadership appointments. Every engagement is led directly by seasoned partners, utilizing discreet direct outreach, proprietary industry mapping, and rigorous behavioral and leadership benchmark assessments.'
+  },
+  {
+    q: 'How does TALENTO handle confidentiality for high-profile executive searches?',
+    a: 'Confidentiality is the cornerstone of our practice. Sensitive leadership transitions, confidential replacements, and competitive market expansions are executed under strict Non-Disclosure Agreements (NDAs). Neither client identities nor sensitive strategic mandates are disclosed until a prospective executive has been thoroughly vetted and mutually cleared for discreet briefing. All search intelligence and candidate files are stored within encrypted, access-restricted repositories.'
+  },
+  {
+    q: 'What is the typical timeline for an executive search or C-suite placement?',
+    a: 'A standard executive search engagement typically spans 4 to 8 weeks from mandate commissioning to final offer acceptance. Market mapping and longlisting commence within the first 10-14 days, followed by structured partner interviews and presentation of a calibrated shortlist by week 3 to 4. Subsequent rounds encompass stakeholder interviews, formal reference checks, and compensation structuring. Expedited tracks are available for urgent leadership mandates.'
+  },
+  {
+    q: 'What engagement models do you provide for employers?',
+    a: 'We provide flexible, value-aligned partnership structures tailored to organizational priorities: Retained Executive Search (dedicated partner exclusivity, deep market mapping, and comprehensive vetting for C-suite and critical roles), Exclusive Milestone Search (structured delivery tied to shortlisting and successful completion milestones), and Board Advisory & Leadership Pipelining (strategic talent advisory, compensation benchmarking, and succession planning).'
+  },
+  {
+    q: 'Does TALENTO provide cross-border and international recruitment capabilities?',
+    a: 'Yes. TALENTO operates with extensive cross-border reach across Asia-Pacific (including Singapore, Vietnam, Thailand, Malaysia, India, China, and Bangladesh), the Middle East (Dubai/UAE), and the United Kingdom. We routinely support regional headquarters, multinational corporations, and VC/PE-backed scale-ups in transferring diaspora executive talent, appointing expatriate country managers, and building localized in-country leadership teams with complete regulatory compliance.'
+  }
+];
+
+type ViewType = 'home' | 'auth' | 'forgot-password' | 'dashboard' | 'careers' | 'insights';
+const isInsightsPath = (p: string) => /^\/insights(\/|$)/i.test(p);
+const slugFromPath = (p: string) => {
+  const m = p.match(/^\/insights\/([^/]+)/i);
+  return m ? decodeURIComponent(m[1]) : null;
+};
 function App() {
-const [currentView, setCurrentView] = useState<ViewType>('home');
+const [currentView, setCurrentView] = useState<ViewType>(() =>
+  typeof window !== 'undefined' && isInsightsPath(window.location.pathname) ? 'insights' : 'home'
+);
+const [insightSlug, setInsightSlug] = useState<string | null>(() =>
+  typeof window !== 'undefined' ? slugFromPath(window.location.pathname) : null
+);
+
+const navigateInsights = (path: string) => {
+  window.history.pushState({}, '', path);
+  setInsightSlug(slugFromPath(path));
+  setCurrentView('insights');
+  setIsMenuOpen(false);
+  window.scrollTo({ top: 0 });
+};
+
+useEffect(() => {
+  const onPop = () => {
+    const p = window.location.pathname;
+    if (isInsightsPath(p)) {
+      setInsightSlug(slugFromPath(p));
+      setCurrentView('insights');
+    } else {
+      setCurrentView((v) => (v === 'insights' ? 'home' : v));
+    }
+  };
+  window.addEventListener('popstate', onPop);
+  return () => window.removeEventListener('popstate', onPop);
+}, []);
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 const [user, setUser] = useState<AuthUser | null>(null);
 const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
@@ -71,6 +126,7 @@ const [cvFile, setCvFile] = useState<File | null>(null);
 const [isSubmittingApplication, setIsSubmittingApplication] = useState(false);
 const [applicationSuccess, setApplicationSuccess] = useState(false);
 const [applicationError, setApplicationError] = useState('');
+const [openFaq, setOpenFaq] = useState<number | null>(0);
 
 useEffect(() => {
 checkUser();
@@ -265,7 +321,19 @@ onProfileUpdate={(updatedProfile: React.SetStateAction<UserProfile | null>) => s
 }
 
 return (
-<div className="min-h-screen bg-[#F7F4EC] dark:bg-[#08162A] text-[#4A5568] dark:text-[#A9B8CC] transition-colors duration-200">
+<div
+onClick={(e) => {
+if (currentView !== 'insights') return;
+const h = (e.target as HTMLElement).closest('a')?.getAttribute('href');
+if (h && h.startsWith('#')) {
+e.preventDefault();
+window.history.pushState({}, '', '/' + h);
+setCurrentView('home');
+setIsMenuOpen(false);
+setTimeout(() => document.querySelector(h)?.scrollIntoView(), 50);
+}
+}}
+className="min-h-screen bg-[#F7F4EC] dark:bg-[#08162A] text-[#4A5568] dark:text-[#A9B8CC] transition-colors duration-200">
 {/* Navigation */}
 <nav className="bg-[#F7F4EC]/95 dark:bg-[#08162A]/90 backdrop-blur-md shadow-sm fixed w-full z-50 transition-colors duration-200 border-b border-[#B9C2CE]/30 dark:border-[#1B3047]">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -284,10 +352,6 @@ return (
 <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
 <a href="#home" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A163] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Home</a>
 <a href="#services" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A163] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Services</a>
-<a href="#charter" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A163] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5">
-  <span className="text-[#C2A163] text-xs">◆</span>
-  Charter
-</a>
 <a href="#industries" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Industries</a>
 <a href="#about" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">About</a>
 <button
@@ -296,6 +360,8 @@ className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:te
 >
 Careers
 </button>
+<a href="/insights" onClick={(e) => { e.preventDefault(); navigateInsights('/insights'); }} className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Insights</a>
+<a href="#faq" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">FAQ</a>
 <a href="#contact" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Contact</a>
 <a href="#apply" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Apply</a>
 </div>
@@ -402,14 +468,6 @@ className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-[
 Services
 </a>
 <a
-href="#charter"
-onClick={() => setIsMenuOpen(false)}
-className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0A1A2E] dark:text-[#A9B8CC] hover:bg-[#EFE9D9]/80 dark:hover:bg-[#08162A]/80 hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors"
->
-<span className="text-[#C2A163] text-xs mr-2">◆</span>
-Executive Charter
-</a>
-<a
 href="#industries"
 onClick={() => setIsMenuOpen(false)}
 className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0A1A2E] dark:text-[#A9B8CC] hover:bg-[#EFE9D9]/80 dark:hover:bg-[#08162A]/80 hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors"
@@ -432,6 +490,20 @@ className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm f
 >
 Careers
 </button>
+<a
+href="/insights"
+onClick={(e) => { e.preventDefault(); navigateInsights('/insights'); }}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0A1A2E] dark:text-[#A9B8CC] hover:bg-[#EFE9D9]/80 dark:hover:bg-[#08162A]/80 hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors"
+>
+Insights
+</a>
+<a
+href="#faq"
+onClick={() => setIsMenuOpen(false)}
+className="flex items-center px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0A1A2E] dark:text-[#A9B8CC] hover:bg-[#EFE9D9]/80 dark:hover:bg-[#08162A]/80 hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors"
+>
+FAQ
+</a>
 <a
 href="#contact"
 onClick={() => setIsMenuOpen(false)}
@@ -519,6 +591,10 @@ Sign In
 </nav>
 
 
+{currentView === 'insights' ? (
+<InsightsPage slug={insightSlug} onNavigate={navigateInsights} />
+) : (
+<>
 <section
 id="home"
 className="relative bg-[#F7F4EC] dark:bg-[#08162A] text-[#0A1A2E] dark:text-white pt-24 pb-16 md:pt-32 md:pb-12 lg:py-24 lg:min-h-screen overflow-hidden transition-colors duration-200 flex items-center"
@@ -767,217 +843,6 @@ Flexible talent solutions and expert recruitment consulting designed for rapid t
   <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">Inquire →</span>
 </div>
 </div>
-</div>
-</div>
-</section>
-
-{/* NEW: THE TALENTO EXECUTIVE CHARTER (Directly from PDF Staffing Agreement) */}
-<section id="charter" className="py-20 sm:py-24 bg-[#FCFBF7] dark:bg-[#08162A] text-[#0A1A2E] dark:text-white border-t border-[#B9C2CE]/30 dark:border-[#1B3047] relative overflow-hidden transition-colors duration-200">
-{/* Background subtle glow */}
-<div className="absolute inset-0 opacity-15 pointer-events-none">
-  <div className="absolute -top-40 right-10 w-96 h-96 bg-[#C2A163]/20 rounded-full blur-3xl"></div>
-  <div className="absolute -bottom-40 left-10 w-96 h-96 bg-[#B9C2CE]/30 dark:bg-[#112640]/80 rounded-full blur-3xl"></div>
-</div>
-
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-{/* Eyebrow and Section Heading */}
-<div className="text-center mb-14 sm:mb-16">
-<div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#7A5F2E] dark:text-[#C2A163] uppercase mb-3">
-  <span>◆</span>
-  <span>The TALENTO Client Commitment</span>
-  <span>◆</span>
-</div>
-<h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-4 tracking-tight">
-  Clear Terms, Transparent Partnership
-</h2>
-<div className="w-16 h-0.5 bg-[#C2A163] mx-auto mb-4"></div>
-<p className="text-base sm:text-lg text-[#4A5568] dark:text-[#A9B8CC] max-w-2xl mx-auto leading-relaxed font-sans">
-  Our executive search charter provides client-first certainty: guaranteed replacements, full rehire discretion, agile timelines, and verifiable billing.
-</p>
-</div>
-
-{/* 4 Pillars Grid (Pages 2-7 of PDF) */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
-{/* Pillar 1: Replacement Guarantee (PDF Slide 3) */}
-<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
-<div>
-  <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
-      Clause 9.1 · Qualifying Criteria
-    </span>
-    <ShieldCheck className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
-  </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
-    Both Exits Covered, Within 30 Days
-  </h3>
-  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
-    Complete protection: voluntary candidate resignation and documented performance termination within thirty (30) calendar days are 100% covered.
-  </p>
-
-  {/* Metrics box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
-    <div>
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#7A5F2E] dark:text-[#C2A163]">30 Days</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Coverage from start date</div>
-    </div>
-    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#0A1A2E] dark:text-white">1 Free</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Complimentary replacement</div>
-    </div>
-  </div>
-
-  {/* Covered pill items */}
-  <div className="flex flex-wrap gap-2 text-xs">
-    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
-      <Check className="inline w-3 h-3 text-[#7A5F2E] dark:text-[#C2A163] mr-1" />Voluntary Resignation
-    </span>
-    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
-      <Check className="inline w-3 h-3 text-[#7A5F2E] dark:text-[#C2A163] mr-1" />Performance Termination
-    </span>
-    <span className="px-2.5 py-1 rounded-md bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] text-[#4A5568] dark:text-[#A9B8CC]">
-      Pool delivered in 45 days
-    </span>
-  </div>
-</div>
-</div>
-
-{/* Pillar 2: Client Discretion (PDF Slide 5) */}
-<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
-<div>
-  <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
-      Non-Rehire Policy
-    </span>
-    <Scale className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
-  </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
-    You Keep Full Discretion
-  </h3>
-  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
-    We eliminated rigid 12-month re-hire restrictions. Clients retain complete business autonomy to retain, re-engage, or re-hire departing talent at any time.
-  </p>
-
-  {/* Before / After box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
-    <div>
-      <div className="text-xs font-semibold uppercase tracking-wider text-[#A23B3B] mb-1">Standard Market</div>
-      <div className="font-serif text-lg font-semibold text-[#718096] dark:text-[#A9B8CC] line-through">12 Months Lock</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC]/80 mt-0.5">Restrictive non-rehire</div>
-    </div>
-    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
-      <div className="text-xs font-semibold uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] mb-1">With TALENTO</div>
-      <div className="font-serif text-lg font-bold text-[#7A5F2E] dark:text-[#C2A163]">Restriction Removed</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Full client discretion retained</div>
-    </div>
-  </div>
-
-  <div className="text-xs text-[#718096] dark:text-[#A9B8CC] flex items-center gap-2">
-    <span className="w-2 h-2 rounded-full bg-[#C2A163]"></span>
-    <span>Fair balance: Standard placement fee applies only upon active re-engagement within 12 months.</span>
-  </div>
-</div>
-</div>
-
-{/* Pillar 3: Replacement Timeline (PDF Slide 4 & 6) */}
-<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
-<div>
-  <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
-      Clause 5 & 9.2 · Delivery Timeline
-    </span>
-    <Clock className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
-  </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
-    A 45-Day Window That Flexes With You
-  </h3>
-  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
-    Agile executive search speed paired with institutional flexibility. Shortlists are delivered quickly, with generous evaluation windows extendable upon request.
-  </p>
-
-  {/* 3 Step Timeline */}
-  <div className="grid grid-cols-3 gap-2 p-3 sm:p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5 text-center">
-    <div>
-      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 01</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-[#0A1A2E] dark:text-white mt-0.5">Day 1</div>
-      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Work order started</div>
-    </div>
-    <div className="border-x border-[#B9C2CE]/40 dark:border-[#1B3047] px-1 sm:px-2">
-      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 02</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-[#7A5F2E] dark:text-[#C2A163] mt-0.5">15 Days</div>
-      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Shortlist presented</div>
-    </div>
-    <div>
-      <div className="text-xs text-[#7A5F2E] dark:text-[#C2A163] font-serif font-bold">Step 03</div>
-      <div className="font-serif text-base sm:text-lg font-bold text-[#0A1A2E] dark:text-white mt-0.5">45 Days</div>
-      <div className="text-[11px] text-[#718096] dark:text-[#A9B8CC] mt-0.5">Evaluation & offer</div>
-    </div>
-  </div>
-
-  <div className="text-xs text-[#718096] dark:text-[#A9B8CC] flex items-center gap-2">
-    <span className="w-2 h-2 rounded-full bg-[#C2A163]"></span>
-    <span>Extendable by simple written email agreement whenever hiring rounds demand extra time.</span>
-  </div>
-</div>
-</div>
-
-{/* Pillar 4: Transparent Fee Structure (PDF Slide 7 & 8) */}
-<div className="bg-white dark:bg-[#0E223D] border border-[#B9C2CE]/40 dark:border-[#1B3047] hover:border-[#C2A163]/60 dark:hover:border-[#C2A163]/40 rounded-2xl p-6 sm:p-8 transition-all duration-300 relative group flex flex-col justify-between shadow-sm hover:shadow-md">
-<div>
-  <div className="flex items-center justify-between mb-4">
-    <span className="text-xs font-mono uppercase tracking-wider text-[#7A5F2E] dark:text-[#C2A163] px-3 py-1 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/30 dark:border-[#C2A163]/20">
-      Fees & Charges · Verifiable Terms
-    </span>
-    <Award className="w-6 h-6 text-[#7A5F2E] dark:text-[#C2A163]" />
-  </div>
-  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-3">
-    Fixed, Verifiable & Known at Offer
-  </h3>
-  <p className="text-sm text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed mb-6 font-sans">
-    Professional fee anchored strictly to the candidate's fixed compensation. Zero hidden markups, zero variable bonuses included in fee base.
-  </p>
-
-  {/* Metric and Fee Basis Box */}
-  <div className="grid grid-cols-2 gap-3 p-4 rounded-xl bg-[#F7F4EC] dark:bg-[#08162A] border border-[#B9C2CE]/40 dark:border-[#1B3047] mb-5">
-    <div>
-      <div className="font-serif text-2xl sm:text-3xl font-bold text-[#7A5F2E] dark:text-[#C2A163]">8%</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">Annual Fixed Gross CTC</div>
-    </div>
-    <div className="border-l border-[#B9C2CE]/40 dark:border-[#1B3047] pl-3">
-      <div className="font-serif text-base font-bold text-[#0A1A2E] dark:text-white">Pure Fixed Base</div>
-      <div className="text-xs text-[#718096] dark:text-[#A9B8CC] mt-0.5">No bonus/variable tax</div>
-    </div>
-  </div>
-
-  <div className="flex flex-wrap gap-2 text-xs">
-    <span className="px-2 py-0.5 rounded bg-[#C2A163]/15 dark:bg-[#08162A] text-[#7A5F2E] dark:text-[#C2A163] border border-[#C2A163]/40 dark:border-[#C2A163]/30">✓ Base Salary Included</span>
-    <span className="px-2 py-0.5 rounded bg-[#F7F4EC] dark:bg-[#08162A] text-[#718096] dark:text-[#A9B8CC] border border-[#B9C2CE]/40 dark:border-[#1B3047]">✕ Performance Bonuses Excluded</span>
-    <span className="px-2 py-0.5 rounded bg-[#F7F4EC] dark:bg-[#08162A] text-[#718096] dark:text-[#A9B8CC] border border-[#B9C2CE]/40 dark:border-[#1B3047]">✕ Sales Commissions Excluded</span>
-  </div>
-</div>
-</div>
-</div>
-
-{/* The Signature Golden Banner from Slide 9 of PDF */}
-<div className="bg-[#C2A163] text-[#08162A] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-[#C2A163]">
-  <div className="flex items-start gap-4">
-    <div className="w-10 h-10 rounded-full bg-[#08162A] text-[#C2A163] flex items-center justify-center font-serif font-bold flex-shrink-0 mt-0.5">
-      ✓
-    </div>
-    <div>
-      <h4 className="font-serif text-xl sm:text-2xl font-bold text-[#08162A] mb-1">
-        Four Points, One Fair Institutional Package
-      </h4>
-      <p className="text-sm sm:text-base text-[#08162A]/90 font-sans leading-relaxed max-w-3xl">
-        A fee anchored to fixed compensation only, a clean net-of-tax position and full remittance certainty for both parties — consistent with standard practice in international executive search.
-      </p>
-    </div>
-  </div>
-  <a
-    href="#contact"
-    className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-[#08162A] text-[#C2A163] hover:bg-[#0E223D] active:scale-95 text-sm font-semibold whitespace-nowrap shadow transition-all duration-200"
-  >
-    Request Agreement Terms →
-  </a>
 </div>
 </div>
 </section>
@@ -1717,6 +1582,72 @@ Registering Candidacy...
 </div>
 </section>
 
+{/* Got Questions? Frequently Asked Questions Section */}
+<section id="faq" className="py-20 sm:py-24 bg-[#EFE9D9]/50 dark:bg-[#071322] border-t border-[#B9C2CE]/30 dark:border-[#1B3047] transition-colors duration-200">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12 sm:mb-16">
+      <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-[#7A5F2E] dark:text-[#C2A163] uppercase mb-3">
+        <span>◆</span>
+        <span>Got Questions?</span>
+        <span>◆</span>
+      </div>
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#0A1A2E] dark:text-white mb-4 tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <div className="w-16 h-0.5 bg-[#C2A163] mx-auto mb-4"></div>
+      <p className="text-base sm:text-lg text-[#4A5568] dark:text-[#A9B8CC] max-w-2xl mx-auto leading-relaxed font-sans">
+        Common questions from founders, CEOs, and HR leaders regarding our executive search practice.
+      </p>
+    </div>
+
+    <div className="space-y-4">
+      {HOME_FAQS.map((faq, idx) => {
+        const isOpen = openFaq === idx;
+        return (
+          <div
+            key={idx}
+            className={`rounded-2xl transition-all duration-300 border overflow-hidden ${
+              isOpen
+                ? 'bg-white dark:bg-[#0E223D] border-[#C2A163]/60 shadow-lg'
+                : 'bg-white/80 dark:bg-[#0E223D]/60 hover:bg-white dark:hover:bg-[#0E223D] border-[#B9C2CE]/30 dark:border-[#1B3047]'
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setOpenFaq(isOpen ? null : idx)}
+              className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none transition-colors"
+              aria-expanded={isOpen}
+            >
+              <span className="font-serif text-base sm:text-lg font-semibold text-[#0A1A2E] dark:text-white leading-snug">
+                {faq.q}
+              </span>
+              <span
+                className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                  isOpen
+                    ? 'bg-[#C2A163] text-[#08162A] rotate-180'
+                    : 'bg-[#B9C2CE]/20 dark:bg-[#1B3047] text-[#7A5F2E] dark:text-[#C2A163]'
+                }`}
+              >
+                <ChevronDown className="w-4 h-4" />
+              </span>
+            </button>
+            {isOpen && (
+              <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-[#4A5568] dark:text-[#A9B8CC] leading-relaxed border-t border-[#B9C2CE]/20 dark:border-[#1B3047]/60">
+                <p>{faq.a}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+{/* Monthly Executive Briefing (Newsletter) */}
+<NewsletterSection className="py-16 sm:py-20 bg-[#F7F4EC] dark:bg-[#08162A] border-t border-[#B9C2CE]/20 dark:border-[#1B3047] transition-colors duration-200" />
+</>
+)}
+
 {/* Footer: Obsidian Navy with champagne rule & diamond motif */}
 <footer className="bg-[#EFE9D9]/80 dark:bg-[#06101E] text-[#4A5568] dark:text-[#A9B8CC] py-14 border-t border-[#C2A163]/40 dark:border-[#C2A163]/30 transition-colors duration-200">
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1742,8 +1673,8 @@ TALENTO is a premier boutique headhunting firm specializing in executive search,
 <li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">C-Suite Talent Hunt</a></li>
 <li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Executive Search</a></li>
 <li><a href="#services" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Interim Leadership</a></li>
-<li><a href="#charter" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Executive Search Charter</a></li>
 <li><a href="#industries" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Sector Coverage</a></li>
+<li><a href="#faq" className="hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors">Frequently Asked Questions</a></li>
 </ul>
 </div>
 
@@ -1765,6 +1696,7 @@ TALENTO is a premier boutique headhunting firm specializing in executive search,
 </div>
 </div>
 </footer>
+<WhatsAppWidget />
 </div>
 );
 }

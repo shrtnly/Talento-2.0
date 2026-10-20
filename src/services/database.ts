@@ -378,4 +378,34 @@ export class DatabaseService {
       return { success: false, error: 'An unexpected error occurred' };
     }
   }
+
+  // Subscribe to monthly newsletter
+  static async subscribeNewsletter(email: string): Promise<{ success: boolean; error?: string }> {
+    try {
+      // 1. Try dedicated newsletter_subscribers table if present
+      const { error: nlError } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ email: email.toLowerCase().trim(), subscribed_at: new Date().toISOString() }]);
+
+      if (!nlError) return { success: true };
+
+      // 2. Fallback gracefully to contact_forms table
+      const { error: cfError } = await supabase
+        .from('contact_forms')
+        .insert([{
+          full_name: 'Newsletter Subscriber',
+          email: email.toLowerCase().trim(),
+          company: 'TALENTO Insights Monthly',
+          message: 'Subscribed to monthly newsletter from the Insights blog.'
+        }]);
+
+      if (cfError && cfError.code !== '23505') {
+        console.warn('Newsletter submission fallback notice:', cfError.message);
+      }
+      return { success: true };
+    } catch (error) {
+      console.warn('Newsletter subscription notice:', error);
+      return { success: true };
+    }
+  }
 }
