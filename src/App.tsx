@@ -20,7 +20,10 @@ import {
   ChevronDown,
   Check,
   Sparkles,
-  Target
+  Target,
+  Award,
+  Clock,
+  Scale
 } from 'lucide-react';
 import { DatabaseService } from './services/database';
 import { AuthForm } from './components/AuthForm';
