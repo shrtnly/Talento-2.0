@@ -623,13 +623,7 @@ className="relative bg-[#F7F4EC] dark:bg-[#08162A] text-[#0A1A2E] dark:text-whit
 
 {/* Left Content */}
 <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left mb-6 lg:mb-0">
-{/* Brand Eyebrow */}
-<div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#C2A163]/15 dark:bg-[#C2A163]/10 border border-[#C2A163]/40 dark:border-[#C2A163]/30 text-[#7A5F2E] dark:text-[#C2A163] text-[10px] xs:text-[11px] sm:text-xs font-semibold tracking-[0.08em] sm:tracking-[0.15em] md:tracking-[0.18em] uppercase mb-5 sm:mb-6 self-center lg:self-start max-w-full text-center transition-all">
-  <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#7A5F2E] dark:bg-[#C2A163] animate-pulse"></span>
-  <span className="whitespace-normal sm:whitespace-nowrap">Global HR Agency & Executive Search</span>
-</div>
-
-<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-serif font-bold text-[#0A1A2E] dark:text-white mb-4 sm:mb-6 tracking-tight leading-[1.12]">
+<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] font-serif font-bold text-[#0A1A2E] dark:text-white mt-4 sm:mt-6 lg:mt-8 mb-4 sm:mb-6 tracking-tight leading-[1.12]">
   Scale your team with{' '}
   <span className="text-[#7A5F2E] dark:text-[#C2A163] italic font-normal">high quality, vetted</span>{' '}
   professionals
