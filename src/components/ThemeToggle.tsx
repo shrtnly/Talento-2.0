@@ -24,8 +24,26 @@ const ThemeToggle = () => {
     }
   }, [theme]);
 
+  useEffect(() => {
+    const syncTheme = () => {
+      const saved = localStorage.getItem('theme') || 'dark';
+      setTheme(saved);
+    };
+    window.addEventListener('storage', syncTheme);
+    window.addEventListener('talento-theme-change', syncTheme);
+    return () => {
+      window.removeEventListener('storage', syncTheme);
+      window.removeEventListener('talento-theme-change', syncTheme);
+    };
+  }, []);
+
   const handleThemeSwitch = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', nextTheme);
+      window.dispatchEvent(new Event('talento-theme-change'));
+    }
   };
 
   const isDark = theme === 'dark';

@@ -417,7 +417,7 @@ function Article({ post, onNavigate }: { post: Insight; onNavigate: (p: string) 
   const sameCat = insights.filter((i) => i.slug !== post.slug && i.category === post.category);
   const others = insights.filter((i) => i.slug !== post.slug && i.category !== post.category);
   const related = [...sameCat, ...others].slice(0, 3);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const graph: object[] = [
     {

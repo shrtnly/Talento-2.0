@@ -47,16 +47,12 @@ const HOME_FAQS = [
     a: 'Confidentiality is the cornerstone of our practice. Sensitive leadership transitions, confidential replacements, and competitive market expansions are executed under strict Non-Disclosure Agreements (NDAs). Neither client identities nor sensitive strategic mandates are disclosed until a prospective executive has been thoroughly vetted and mutually cleared for discreet briefing. All search intelligence and candidate files are stored within encrypted, access-restricted repositories.'
   },
   {
-    q: 'What is the typical timeline for an executive search or C-suite placement?',
-    a: 'A standard executive search engagement typically spans 4 to 8 weeks from mandate commissioning to final offer acceptance. Market mapping and longlisting commence within the first 10-14 days, followed by structured partner interviews and presentation of a calibrated shortlist by week 3 to 4. Subsequent rounds encompass stakeholder interviews, formal reference checks, and compensation structuring. Expedited tracks are available for urgent leadership mandates.'
-  },
-  {
     q: 'What engagement models do you provide for employers?',
-    a: 'We provide flexible, value-aligned partnership structures tailored to organizational priorities: Retained Executive Search (dedicated partner exclusivity, deep market mapping, and comprehensive vetting for C-suite and critical roles), Exclusive Milestone Search (structured delivery tied to shortlisting and successful completion milestones), and Board Advisory & Leadership Pipelining (strategic talent advisory, compensation benchmarking, and succession planning).'
+    a: 'TALENTO delivers a bespoke, fully integrated ecosystem of engagement models engineered to orchestrate workforce scalability with surgical precision, strategic agility, and end-to-end regulatory compliance. From orchestrating high-impact C-suite acquisitions via Executive Search, and deploying rapid-response niche talent through On-Demand Talent Acquisition, to de-risking your global expansion as your fully compliant Employer of Record (EOR) and PEO entity in Bangladesh—unified with localized and global Payroll Integration—we serve as the ultimate bridge between local infrastructure and global corporate strategy. We drive operational excellence through scalable HR-as-a-Service (HRaaS) and Turnkey Operations, featuring OKR-aligned lifecycle management, optimized BPO delivery, and Tier-1 Managed Operations & Infrastructure Support. Crucially, every mandate is fortified by our Primary Source Background Verification framework, ensuring uncompromising due diligence, proactive risk mitigation, and ironclad regulatory alignment across your entire human capital supply chain.'
   },
   {
     q: 'Does TALENTO provide cross-border and international recruitment capabilities?',
-    a: 'Yes. TALENTO operates with extensive cross-border reach across Asia-Pacific (including Singapore, Vietnam, Thailand, Malaysia, India, China, and Bangladesh), the Middle East (Dubai/UAE), and the United Kingdom. We routinely support regional headquarters, multinational corporations, and VC/PE-backed scale-ups in transferring diaspora executive talent, appointing expatriate country managers, and building localized in-country leadership teams with complete regulatory compliance.'
+    a: 'Yes. TALENTO delivers global executive search and cross-border talent acquisition across North America (USA, Canada), the United Kingdom, the European Union, Australia, the Middle East (UAE/Dubai), and key Asia-Pacific markets (including Singapore, Vietnam, Thailand, Malaysia, India, China, and Bangladesh). We partner with multinationals, regional headquarters, and VC/PE-backed scale-ups to source top diaspora talent, appoint expatriate leadership, and assemble high-performing, locally compliant executive teams worldwide.'
   }
 ];
 
@@ -129,7 +125,7 @@ const [cvFile, setCvFile] = useState<File | null>(null);
 const [isSubmittingApplication, setIsSubmittingApplication] = useState(false);
 const [applicationSuccess, setApplicationSuccess] = useState(false);
 const [applicationError, setApplicationError] = useState('');
-const [openFaq, setOpenFaq] = useState<number | null>(0);
+const [openFaq, setOpenFaq] = useState<number | null>(null);
 
 useEffect(() => {
 checkUser();
