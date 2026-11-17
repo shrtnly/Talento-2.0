@@ -354,7 +354,7 @@ className="min-h-screen bg-[#F7F4EC] dark:bg-[#08162A] text-[#4A5568] dark:text-
 <a href="#industries" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">Industries</a>
 <a href="#about" className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200">About</a>
 <button
-onClick={() => window.open('https://job.talento.agency/', '_blank')}
+onClick={() => window.open('https://job.talento-glb.com/', '_blank')}
 className="text-[#0A1A2E] dark:text-[#A9B8CC] hover:text-[#7A5F2E] dark:hover:text-[#C2A26B] hover:bg-[#EFE9D9]/60 dark:hover:bg-[#0E223D]/60 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200"
 >
 Careers
@@ -483,7 +483,7 @@ About
 <button
 onClick={() => {
 setIsMenuOpen(false);
-window.open('https://job.talento.agency/', '_blank');
+window.open('https://job.talento-glb.com/', '_blank');
 }}
 className="flex items-center w-full text-left px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0A1A2E] dark:text-[#A9B8CC] hover:bg-[#EFE9D9]/80 dark:hover:bg-[#08162A]/80 hover:text-[#7A5F2E] dark:hover:text-[#C2A163] transition-colors"
 >
@@ -636,7 +636,7 @@ className="relative bg-[#F7F4EC] dark:bg-[#08162A] text-[#0A1A2E] dark:text-whit
 
 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 lg:mb-10 w-full sm:w-auto">
 <button
-onClick={() => window.open('https://job.talento.agency/', '_blank')}
+onClick={() => window.open('https://job.talento-glb.com/', '_blank')}
 className="group relative overflow-hidden bg-[#C2A163] hover:bg-[#A8874F] active:scale-95 text-[#08162A] px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl font-sans"
 >
 <span className="relative z-10 flex items-center font-medium">
